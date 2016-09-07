@@ -1,0 +1,32 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "figure/",
+  fig.height = 1
+)
+```
+
+# Pollen
+
+[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
+
+## Installation
+
+```R
+devtools::install_github("nowosad/pollen")
+```
+
+## Examples
+
+```{r, exp, eval=FALSE}
+library('pollen')
+```

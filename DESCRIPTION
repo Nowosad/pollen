@@ -1,0 +1,14 @@
+Package: pollen
+Type: Package
+Title: Tools for working with aerobiological data
+Version: 0.01
+Authors@R: person("Jakub", "Nowosad", email = "nowosad.jakub@gmail.com",
+    role = c("aut", "cre"))
+Description: More about what it does (maybe more than one line)
+Imports:
+    dplyr
+    lubridate
+    purrr
+License: MIT + file LICENSE
+LazyData: TRUE
+RoxygenNote: 5.0.1
