@@ -1,13 +1,13 @@
-#' A Pollen Season 2 Function
+#' A Pollen Season Function
 #' 
-#' This function calculates the start and the end of pollen season for each year
-#' @param df - data.frame object with dates and pollen count values
+#' This function calculates the start and the end of pollen season for each year [only one!]
+#' @param df - `data.frame` object with dates and pollen count values
 #' @param value - name of the column with pollen count values
-#' @param date name of the column with dates
-#' @param method - the pollen season method (95, 99, etc.)
+#' @param date name of the dates column
+#' @param method - the pollen season method (95, 99, etc.) [only numeric!]
 #'
 #' @return data.frame object with year, date of pollen season start and date of pollen season end
-#'
+#' @importFrom lubridate year
 #' @keywords pollen, pollen season
 #'
 #' @export
@@ -32,20 +32,31 @@
 #' 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0, 3, 23, 14.4, 19.8, 41, 
 #' 12.6, 43, 18.6, 0.6, 1.8, 1.2, 1.8, 0, 4.2, 3, 0, 0.6, 0, 0, 
 #' 0, 0, 0.6, 1.2, 0.6, 0, 0, 0, 1.2, 0, 3.6, 4.2, 0, 0, 0, 0.6,0)),
-#' .Names = c("Date", "value"), row.names = c(NA, 100L), class = "data.frame")
+#' .Names = c("Date", "Value"), row.names = c(NA, 100L), class = "data.frame")
 #'
-#'pollen_season2(df, "value", "Date", 95)
+#'pollen_season(df, "Value", "Date", 95)
 
-pollen_season2 <- function(df=df, value="betula", date="date", method=95){
-  library('plyr')
-  library('dplyr')
-  library('lubridate')
-  beginning_fun <- function(x, value) x[cumsum(x[,value])>(sum(x[,value])*((100-method)/100)), ]  
-  end_fun <- function(x, value) x[cumsum(x[,value])>(sum(x[,value])*(method/100)), ]
-  beg_end_fun <- function(x, value) data.frame(beginning_fun(x, value)[1,date], end_fun(x, value)[1,date])
-  df[ , "year"] <- as.factor(year(df[, date]))
-  df <- df %>%  arrange_(date)
-  pollen_sez <- ddply(df, .variables=.(year), beg_end_fun, value)
-  colnames(pollen_sez) <- c("year", "beginning", "end")
-  pollen_sez
+
+# x <- df; value='Value'; method=95
+# 
+# x <- df$Value
+# 
+# value <- df$Value
+# date <- df$Date
+
+pollen_season <- function(df=df, value="betula", date="date", method=95){
+        start <- pollen_season_start(df[, value], df[, date], method = method)
+        end <- pollen_season_end(df[, value], df[, date], method = method)
+        year <- unique(year(df[, date]))
+        data.frame(year=year, start=start, end=end)
+}
+
+pollen_season_start <- function(value, date, method){
+        indx <- match(TRUE, cumsum(value)>(sum(value)*((100-method)/100)))
+        date[indx]
+}     
+
+pollen_season_end <- function(value, date, method){
+        indx <- match(TRUE, cumsum(value)>(sum(value)*(method/100)))
+        date[indx]
 }
