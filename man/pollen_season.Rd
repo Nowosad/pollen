@@ -4,7 +4,7 @@
 \alias{pollen_season}
 \title{A Pollen Season Function}
 \usage{
-pollen_season(df = df, value = "betula", date = "date", method = 95)
+pollen_season(df, value, date, method = 95)
 }
 \arguments{
 \item{df}{- `data.frame` object with dates and pollen count values}

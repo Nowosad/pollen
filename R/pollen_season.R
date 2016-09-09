@@ -8,6 +8,8 @@
 #'
 #' @return data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year
+#' @import purrr
+#'  
 #' @keywords pollen, pollen season
 #'
 #' @export
@@ -34,29 +36,35 @@
 #' 0, 0, 0.6, 1.2, 0.6, 0, 0, 0, 1.2, 0, 3.6, 4.2, 0, 0, 0, 0.6,0)),
 #' .Names = c("Date", "Value"), row.names = c(NA, 100L), class = "data.frame")
 #'
-#'pollen_season(df, "Value", "Date", 95)
+#' pollen_season(df, "Value", "Date", 95)
 
 
-# x <- df; value='Value'; method=95
+# df <- df; value='Value'; date='Date'; method=95
 # 
 # x <- df$Value
 # 
 # value <- df$Value
 # date <- df$Date
 
-pollen_season <- function(df=df, value="betula", date="date", method=95){
-        start <- pollen_season_start(df[, value], df[, date], method = method)
-        end <- pollen_season_end(df[, value], df[, date], method = method)
-        year <- unique(year(df[, date]))
-        data.frame(year=year, start=start, end=end)
+pollen_season <- function(df, value, date, method=95){
+        df %>% split(., year(.[[date]])) %>%
+                map(~pollen_season_single_year(., value=value, date=date, method=method)) %>% 
+                map_df(rbind)
 }
 
-pollen_season_start <- function(value, date, method){
+pollen_season_start <- function(method, value, date){
         indx <- match(TRUE, cumsum(value)>(sum(value)*((100-method)/100)))
         date[indx]
 }     
 
-pollen_season_end <- function(value, date, method){
+pollen_season_end <- function(method, value, date){
         indx <- match(TRUE, cumsum(value)>(sum(value)*(method/100)))
         date[indx]
+}
+
+pollen_season_single_year <- function(df, value, date, method){
+        start <- pollen_season_start(method = method, df[[value]], df[[date]])
+        end <- pollen_season_end(method = method, df[[value]], df[[date]])
+        year <- unique(year(df[[date]]))
+        data.frame(year=year, start=start, end=end)     
 }
