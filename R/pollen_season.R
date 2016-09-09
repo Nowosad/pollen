@@ -8,7 +8,7 @@
 #'
 #' @return data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year
-#' @import purrr
+#' @importFrom purrr %>% map map_df
 #'  
 #' @keywords pollen, pollen season
 #'
