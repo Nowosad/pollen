@@ -8,6 +8,8 @@ Description: This package contains a set of function for working with aerobiolog
 Imports:
     lubridate,
     purrr
+Suggests:
+    testthat
 License: MIT + file LICENSE
 LazyData: TRUE
 RoxygenNote: 5.0.1
