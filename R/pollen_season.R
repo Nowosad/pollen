@@ -2,9 +2,9 @@
 #' 
 #' This function calculates the start and the end of pollen season for each year
 #' @param x A data.frame with dates and pollen count values
-#' @param value A name of the column with pollen count values
-#' @param date A name of the dates column
-#' @param method A pollen season method - 95, 98, 99, or Mesa
+#' @param value The name of the column with pollen count values
+#' @param date The name of the dates column
+#' @param method The pollen season method - 95, 98, 99, or Mesa
 #' 
 #' @return A data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year
