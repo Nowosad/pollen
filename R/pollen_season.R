@@ -1,7 +1,7 @@
 #' A Pollen Season Function
 #' 
 #' This function calculates the start and the end of pollen season for each year
-#' @param df A data.frame with dates and pollen count values
+#' @param x A data.frame with dates and pollen count values
 #' @param value A name of the column with pollen count values
 #' @param date A name of the dates column
 #' @param method A pollen season method - 95, 98, 99, or Mesa
@@ -20,7 +20,7 @@
 #' @export
 #' 
 #' @examples
-#' df <- structure(list(Date = structure(c(11323, 11324, 11325, 11326, 
+#' x <- structure(list(Date = structure(c(11323, 11324, 11325, 11326, 
 #'11327, 11328, 11329, 11330, 11331, 11332, 11333, 11334, 11335, 
 #'11336, 11337, 11338, 11339, 11340, 11341, 11342, 11343, 11344, 
 #'11345, 11346, 11347, 11348, 11349, 11350, 11351, 11352, 11353, 
@@ -41,18 +41,10 @@
 #' 0, 0, 0.6, 1.2, 0.6, 0, 0, 0, 1.2, 0, 3.6, 4.2, 0, 0, 0, 0.6,0)),
 #' .Names = c("Date", "Value"), row.names = c(NA, 100L), class = "data.frame")
 #'
-#' pollen_season(df, "Value", "Date", method="95")
+#' pollen_season(x, "Value", "Date", method="95")
 
-
-# df <- df; value='Value'; date='Date'; method=95
-# 
-# x <- df$Value
-# 
-# value <- df$Value
-# date <- df$Date
-
-pollen_season <- function(df, value, date, method){
-        df %>% split(., year(.[[date]])) %>%
+pollen_season <- function(x, value, date, method){
+        x %>% split(., year(.[[date]])) %>%
                 map(~pollen_season_single_year(., value=value, date=date, method=method)) %>% 
                 map_df(rbind)
 }
@@ -83,9 +75,9 @@ pollen_season_end <- function(method, value, date, threshold=NULL){
         date[indx]
 }
 
-pollen_season_single_year <- function(df, value, date, method){
-        start <- pollen_season_start(method = method, df[[value]], df[[date]])
-        end <- pollen_season_end(method = method, df[[value]], df[[date]])
-        year <- unique(year(df[[date]]))
+pollen_season_single_year <- function(x, value, date, method){
+        start <- pollen_season_start(method = method, x[[value]], x[[date]])
+        end <- pollen_season_end(method = method, x[[value]], x[[date]])
+        year <- unique(year(x[[date]]))
         data.frame(year=year, start=start, end=end)     
 }
