@@ -1,15 +1,20 @@
 #' A Pollen Season Function
 #' 
-#' This function calculates the start and the end of pollen season for each year [only one!]
-#' @param df - `data.frame` object with dates and pollen count values
-#' @param value - name of the column with pollen count values
-#' @param date name of the dates column
-#' @param method - the pollen season method (95, 99, etc.) [only numeric!]
-#'
-#' @return data.frame object with year, date of pollen season start and date of pollen season end
+#' This function calculates the start and the end of pollen season for each year
+#' @param df A data.frame with dates and pollen count values
+#' @param value A name of the column with pollen count values
+#' @param date A name of the dates column
+#' @param method A pollen season method - 95, 98, 99, or Mesa
+#' 
+#' @return A data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year
 #' @importFrom purrr %>% map map_df
 #'  
+#' @references Nilsson S. and Persson S.: 1981, Tree pollen spectra in the Stockholm region (Sweden) 1973-1980, Grana 20, 179-182.
+#' @references Andersen T.B.: 1991, A model to predict the beginning of the pollen season, Grana 30, 269-275.
+#' @references Torben B.A.: 1991, A model to predict the beginning of the pollen season, Grana 30, 269-275.
+#' @references Galan C., Emberlin J., Dominguez E., Bryant R.H. and Villamandos F.: 1995, A comparative analysis of daily variations in the Gramineae pollen counts at Cordoba, Spain and London, UK, Grana 34, 189-198.
+#' @references Sanchez-Mesa J.A., Smith M., Emberlin J., Allitt U., Caulton E. and Galan C.: 2003, Characteristics of grass pollen seasons in areas of southern Spain and the United Kingdom, Aerobiologia 19, 243-250.
 #' @keywords pollen, pollen season
 #'
 #' @export
@@ -36,7 +41,7 @@
 #' 0, 0, 0.6, 1.2, 0.6, 0, 0, 0, 1.2, 0, 3.6, 4.2, 0, 0, 0, 0.6,0)),
 #' .Names = c("Date", "Value"), row.names = c(NA, 100L), class = "data.frame")
 #'
-#' pollen_season(df, "Value", "Date", 95)
+#' pollen_season(df, "Value", "Date", method="95")
 
 
 # df <- df; value='Value'; date='Date'; method=95
@@ -46,19 +51,35 @@
 # value <- df$Value
 # date <- df$Date
 
-pollen_season <- function(df, value, date, method=95){
+pollen_season <- function(df, value, date, method){
         df %>% split(., year(.[[date]])) %>%
                 map(~pollen_season_single_year(., value=value, date=date, method=method)) %>% 
                 map_df(rbind)
 }
 
-pollen_season_start <- function(method, value, date){
-        indx <- match(TRUE, cumsum(value)>(sum(value)*((100-method)/100)))
+pollen_season_start <- function(method, value, date, threshold=NULL){
+        if (as.numeric(method)==90) {
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.05))
+        } else if (as.numeric(method)==95){
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.025))
+        } else if (as.numeric(method)==98){
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.01))
+        } else if (method=='Mesa'){
+                indx <- match(TRUE, value>threshold)
+        }
         date[indx]
 }     
 
-pollen_season_end <- function(method, value, date){
-        indx <- match(TRUE, cumsum(value)>(sum(value)*(method/100)))
+pollen_season_end <- function(method, value, date, threshold=NULL){
+        if (as.numeric(method)==90) {
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.95))
+        } else if (as.numeric(method)==95){
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.975))
+        } else if (as.numeric(method)==98){
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.99))
+        } else if (method=='Mesa'){
+                indx <- which(value>threshold)[[-1L]]
+        }
         date[indx]
 }
 

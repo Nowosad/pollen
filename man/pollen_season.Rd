@@ -4,22 +4,22 @@
 \alias{pollen_season}
 \title{A Pollen Season Function}
 \usage{
-pollen_season(df, value, date, method = 95)
+pollen_season(df, value, date, method)
 }
 \arguments{
-\item{df}{- `data.frame` object with dates and pollen count values}
+\item{df}{A data.frame with dates and pollen count values}
 
-\item{value}{- name of the column with pollen count values}
+\item{value}{A name of the column with pollen count values}
 
-\item{date}{name of the dates column}
+\item{date}{A name of the dates column}
 
-\item{method}{- the pollen season method (95, 99, etc.) [only numeric!]}
+\item{method}{A pollen season method - 95, 98, 99, or Mesa}
 }
 \value{
-data.frame object with year, date of pollen season start and date of pollen season end
+A data.frame object with year, date of pollen season start and date of pollen season end
 }
 \description{
-This function calculates the start and the end of pollen season for each year [only one!]
+This function calculates the start and the end of pollen season for each year
 }
 \examples{
 df <- structure(list(Date = structure(c(11323, 11324, 11325, 11326, 
@@ -43,7 +43,18 @@ value = c(0,
 0, 0, 0.6, 1.2, 0.6, 0, 0, 0, 1.2, 0, 3.6, 4.2, 0, 0, 0, 0.6,0)),
 .Names = c("Date", "Value"), row.names = c(NA, 100L), class = "data.frame")
 
-pollen_season(df, "Value", "Date", 95)
+pollen_season(df, "Value", "Date", method="95")
+}
+\references{
+Nilsson S. and Persson S.: 1981, Tree pollen spectra in the Stockholm region (Sweden) 1973-1980, Grana 20, 179-182.
+
+Andersen T.B.: 1991, A model to predict the beginning of the pollen season, Grana 30, 269-275.
+
+Torben B.A.: 1991, A model to predict the beginning of the pollen season, Grana 30, 269-275.
+
+Galan C., Emberlin J., Dominguez E., Bryant R.H. and Villamandos F.: 1995, A comparative analysis of daily variations in the Gramineae pollen counts at Cordoba, Spain and London, UK, Grana 34, 189-198.
+
+Sanchez-Mesa J.A., Smith M., Emberlin J., Allitt U., Caulton E. and Galan C.: 2003, Characteristics of grass pollen seasons in areas of southern Spain and the United Kingdom, Aerobiologia 19, 243-250.
 }
 \keyword{pollen}
 \keyword{pollen,}

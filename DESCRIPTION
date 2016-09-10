@@ -1,7 +1,7 @@
 Package: pollen
 Type: Package
 Title: Tools for working with aerobiological data
-Version: 0.05
+Version: 0.2
 Authors@R: person("Jakub", "Nowosad", email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"))
 Description: This package contains a set of function for working with aerobiological data, such as calculation of pollen season limits.

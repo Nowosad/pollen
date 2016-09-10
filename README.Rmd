@@ -34,3 +34,5 @@ devtools::install_github("nowosad/pollen")
 ```{r, exp, eval=FALSE}
 library('pollen')
 ```
+
+ERROR IN SEASONS!!!s
