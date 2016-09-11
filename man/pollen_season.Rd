@@ -4,16 +4,16 @@
 \alias{pollen_season}
 \title{A Pollen Season Function}
 \usage{
-pollen_season(df, value, date, method)
+pollen_season(x, value, date, method)
 }
 \arguments{
-\item{df}{A data.frame with dates and pollen count values}
+\item{x}{A data.frame with dates and pollen count values}
 
-\item{value}{A name of the column with pollen count values}
+\item{value}{The name of the column with pollen count values}
 
-\item{date}{A name of the dates column}
+\item{date}{The name of the dates column}
 
-\item{method}{A pollen season method - 95, 98, 99, or Mesa}
+\item{method}{The pollen season method - 95, 98, 99, or Mesa}
 }
 \value{
 A data.frame object with year, date of pollen season start and date of pollen season end
@@ -22,7 +22,7 @@ A data.frame object with year, date of pollen season start and date of pollen se
 This function calculates the start and the end of pollen season for each year
 }
 \examples{
-df <- structure(list(Date = structure(c(11323, 11324, 11325, 11326, 
+x <- structure(list(Date = structure(c(11323, 11324, 11325, 11326, 
 11327, 11328, 11329, 11330, 11331, 11332, 11333, 11334, 11335, 
 11336, 11337, 11338, 11339, 11340, 11341, 11342, 11343, 11344, 
 11345, 11346, 11347, 11348, 11349, 11350, 11351, 11352, 11353, 
@@ -43,7 +43,7 @@ value = c(0,
 0, 0, 0.6, 1.2, 0.6, 0, 0, 0, 1.2, 0, 3.6, 4.2, 0, 0, 0, 0.6,0)),
 .Names = c("Date", "Value"), row.names = c(NA, 100L), class = "data.frame")
 
-pollen_season(df, "Value", "Date", method="95")
+pollen_season(x, "Value", "Date", method="95")
 }
 \references{
 Nilsson S. and Persson S.: 1981, Tree pollen spectra in the Stockholm region (Sweden) 1973-1980, Grana 20, 179-182.
