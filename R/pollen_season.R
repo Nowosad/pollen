@@ -4,7 +4,7 @@
 #' @param x A data.frame with dates and pollen count values
 #' @param value The name of the column with pollen count values
 #' @param date The name of the dates column
-#' @param method The pollen season method - 95, 98, 99, or Mesa
+#' @param method The pollen season method - "95", "98", "99", "Mesa", or "Jager"
 #' 
 #' @return A data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year
@@ -15,6 +15,8 @@
 #' @references Torben B.A.: 1991, A model to predict the beginning of the pollen season, Grana 30, 269-275.
 #' @references Galan C., Emberlin J., Dominguez E., Bryant R.H. and Villamandos F.: 1995, A comparative analysis of daily variations in the Gramineae pollen counts at Cordoba, Spain and London, UK, Grana 34, 189-198.
 #' @references Sanchez-Mesa J.A., Smith M., Emberlin J., Allitt U., Caulton E. and Galan C.: 2003, Characteristics of grass pollen seasons in areas of southern Spain and the United Kingdom, Aerobiologia 19, 243-250.
+#' @references Jager S., Nilsson S., Berggren B., Pessi A.M., Helander M. and Ramfjord H.: 1996, Trends of some airborne tree pollen in the Nordic countries and Austria, 1980-1993. A comparison between Stockholm, Trondheim, Turku and Vienna, Grana 35, 171-178.
+#' 
 #' @keywords pollen, pollen season
 #'
 #' @export
@@ -50,24 +52,33 @@ pollen_season <- function(x, value, date, method){
 }
 
 pollen_season_start <- function(method, value, date, threshold=NULL){
-        if (as.numeric(method)==90) {
+        if (method=='90') {
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.05))
-        } else if (as.numeric(method)==95){
+        } else if (method=='95'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.025))
-        } else if (as.numeric(method)==98){
+        } else if (method=='98'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.01))
         } else if (method=='Mesa'){
                 indx <- match(TRUE, value>threshold)
+        } else if (method=='Jager'){
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.01))
+                seven_subsequent_zeros <- subsequent_zeros(value=value, indx=indx, length=7)
+                if(seven_subsequent_zeros){
+                        indx <- indx + 8
+                        while(is_zero(value[indx])){
+                                indx <- indx + 1
+                        }
+                }
         }
         date[indx]
 }     
 
 pollen_season_end <- function(method, value, date, threshold=NULL){
-        if (as.numeric(method)==90) {
+        if (method=='90' | method=='Jager') {
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.95))
-        } else if (as.numeric(method)==95){
+        } else if (method=='95'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.975))
-        } else if (as.numeric(method)==98){
+        } else if (method=='98'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.99))
         } else if (method=='Mesa'){
                 indx <- which(value>threshold)[[-1L]]
@@ -80,4 +91,12 @@ pollen_season_single_year <- function(x, value, date, method){
         end <- pollen_season_end(method = method, x[[value]], x[[date]])
         year <- unique(year(x[[date]]))
         data.frame(year=year, start=start, end=end)     
+}
+
+subsequent_zeros <- function(value, indx, length=6){
+        is_zero(value[indx + seq_len(length)]) %>% all(.)
+}
+
+is_zero <- function(value){
+        value==0.0
 }

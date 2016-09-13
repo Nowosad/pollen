@@ -13,7 +13,7 @@ pollen_season(x, value, date, method)
 
 \item{date}{The name of the dates column}
 
-\item{method}{The pollen season method - 95, 98, 99, or Mesa}
+\item{method}{The pollen season method - "95", "98", "99", "Mesa", or "Jager"}
 }
 \value{
 A data.frame object with year, date of pollen season start and date of pollen season end
@@ -55,6 +55,8 @@ Torben B.A.: 1991, A model to predict the beginning of the pollen season, Grana 
 Galan C., Emberlin J., Dominguez E., Bryant R.H. and Villamandos F.: 1995, A comparative analysis of daily variations in the Gramineae pollen counts at Cordoba, Spain and London, UK, Grana 34, 189-198.
 
 Sanchez-Mesa J.A., Smith M., Emberlin J., Allitt U., Caulton E. and Galan C.: 2003, Characteristics of grass pollen seasons in areas of southern Spain and the United Kingdom, Aerobiologia 19, 243-250.
+
+Jager S., Nilsson S., Berggren B., Pessi A.M., Helander M. and Ramfjord H.: 1996, Trends of some airborne tree pollen in the Nordic countries and Austria, 1980-1993. A comparison between Stockholm, Trondheim, Turku and Vienna, Grana 35, 171-178.
 }
 \keyword{pollen}
 \keyword{pollen,}
