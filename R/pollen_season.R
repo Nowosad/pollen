@@ -4,7 +4,7 @@
 #' @param x A data.frame with dates and pollen count values
 #' @param value The name of the column with pollen count values
 #' @param date The name of the dates column
-#' @param method The pollen season method - "95", "98", "99", "Mesa", or "Jager"
+#' @param method The pollen season method - "95", "98", "99", "Mesa", "Jager", or "Lejoly"
 #' 
 #' @return A data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year
@@ -16,6 +16,7 @@
 #' @references Galan C., Emberlin J., Dominguez E., Bryant R.H. and Villamandos F.: 1995, A comparative analysis of daily variations in the Gramineae pollen counts at Cordoba, Spain and London, UK, Grana 34, 189-198.
 #' @references Sanchez-Mesa J.A., Smith M., Emberlin J., Allitt U., Caulton E. and Galan C.: 2003, Characteristics of grass pollen seasons in areas of southern Spain and the United Kingdom, Aerobiologia 19, 243-250.
 #' @references Jager S., Nilsson S., Berggren B., Pessi A.M., Helander M. and Ramfjord H.: 1996, Trends of some airborne tree pollen in the Nordic countries and Austria, 1980-1993. A comparison between Stockholm, Trondheim, Turku and Vienna, Grana 35, 171-178.
+#' @references Lejoly-Gabriel and Leuschner: 1983, Comparison of air-borne pollen at Louvain-la-Neuve (Belgium) and Basel (Switzerland) during 1979 and 1980, Grana 22, 59-64.
 #' 
 #' @keywords pollen, pollen season
 #'
@@ -69,6 +70,11 @@ pollen_season_start <- function(method, value, date, threshold=NULL){
                                 indx <- indx + 1
                         }
                 }
+        } else if (method=='Lejoly'){
+                indx <- match(TRUE, cumsum(value)>(sum(value)*0.05))
+                while(!(value[indx]>(sum(value)*0.01))){
+                        indx <- indx + 1
+                }
         }
         date[indx]
 }     
@@ -81,7 +87,17 @@ pollen_season_end <- function(method, value, date, threshold=NULL){
         } else if (method=='98'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.99))
         } else if (method=='Mesa'){
-                indx <- which(value>threshold)[[-1L]]
+                above_threshold <- which(value>threshold)
+                len_ab_thres <- length(above_threshold)
+                indx <- above_threshold[[len_ab_thres]]
+        } else if (method=='Lejoly'){
+                above_threshold <- which(value>(sum(value)*0.01))
+                len_ab_thres <- length(above_threshold)
+                indx <- above_threshold[[len_ab_thres]]
+                while (!(sum(value[indx:(indx+2)]) >= (sum(value)*0.03))){
+                        len_ab_thres <- len_ab_thres - 1
+                        indx <- above_threshold[[len_ab_thres]]
+                }
         }
         date[indx]
 }
