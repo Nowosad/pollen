@@ -13,7 +13,7 @@ pollen_season(x, value, date, method)
 
 \item{date}{The name of the dates column}
 
-\item{method}{The pollen season method - "95", "98", "99", "Mesa", "Jager", or "Lejoly"}
+\item{method}{The pollen season method - "90", "95", "98", "Mesa", "Jager", or "Lejoly"}
 }
 \value{
 A data.frame object with year, date of pollen season start and date of pollen season end

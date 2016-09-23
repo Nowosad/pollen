@@ -4,7 +4,7 @@
 #' @param x A data.frame with dates and pollen count values
 #' @param value The name of the column with pollen count values
 #' @param date The name of the dates column
-#' @param method The pollen season method - "95", "98", "99", "Mesa", "Jager", or "Lejoly"
+#' @param method The pollen season method - "90", "95", "98", "Mesa", "Jager", or "Lejoly"
 #' 
 #' @return A data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year
