@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Pollen
+# Pollen - tools for working with aerobiological data
 
 [![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
 

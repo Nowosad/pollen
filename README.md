@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Pollen
-======
+Pollen - tools for working with aerobiological data
+===================================================
 
 [![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
 
