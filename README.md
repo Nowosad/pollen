@@ -16,7 +16,9 @@ Examples
 
 ``` r
 library('pollen')
+```
 
+``` r
 data('pollen_count')
 head(pollen_count)
 #>   site       date alder birch hazel
@@ -26,7 +28,9 @@ head(pollen_count)
 #> 4   Oz 2007-01-04     0     0     0
 #> 5   Oz 2007-01-05     0     0     0
 #> 6   Oz 2007-01-06     0     0     0
+```
 
+``` r
 df <- subset(pollen_count, site=='Oz')
 pollen_season(df, value="birch", date="date", method="95")
 #>    year      start        end
@@ -40,7 +44,9 @@ pollen_season(df, value="birch", date="date", method="95")
 #> 8  2014 2014-04-08 2014-05-10
 #> 9  2015 2015-04-08 2015-04-30
 #> 10 2016 2016-04-06 2016-05-09
+```
 
+``` r
 df2 <- subset(pollen_count, site=='Atlantis')
 pollen_season(df2, value="alder", date="date", method="95")
 #>    year      start        end
@@ -54,7 +60,9 @@ pollen_season(df2, value="alder", date="date", method="95")
 #> 8  2014 2014-02-11 2014-04-29
 #> 9  2015 2015-03-19 2015-04-04
 #> 10 2016 2016-03-14 2016-04-23
+```
 
+``` r
 library('purrr')
 pollen_count %>% split(., .$site) %>% 
                 map(~pollen_season(., value="hazel", date="date", method="95"))
