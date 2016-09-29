@@ -33,6 +33,16 @@ devtools::install_github("nowosad/pollen")
 
 ```{r, exp, eval=FALSE}
 library('pollen')
+data('pollen_count')
+
+df <- subset(pollen_count, site=='Oz')
+pollen_season(df, value="birch", date="date", method="95")
+
+df2 <- subset(pollen_count, site=='Atlantis')
+pollen_season(df2, value="alder", date="date", method="95")
+
+library('purrr')
+pollen_count %>% split(., .$site) %>% 
+                map(~pollen_season(., value="hazel", date="date", method="95"))
 ```
 
-ERROR IN SEASONS!!!s
