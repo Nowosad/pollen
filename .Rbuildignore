@@ -1,4 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 tmp
-README.Rmd 
+README.Rmd
+.travis.yml
