@@ -7,7 +7,7 @@
 #' @param method The pollen season method - "90", "95", "98", "Mesa", "Jager", or "Lejoly"
 #' 
 #' @return A data.frame object with year, date of pollen season start and date of pollen season end
-#' @importFrom lubridate year
+#' @importFrom lubridate year is.Date
 #' @importFrom purrr %>% map map_df
 #' @importFrom dplyr arrange_
 #'  
@@ -35,8 +35,10 @@
 #' library('purrr')
 #' pollen_count %>% split(., .$site) %>% 
 #'                 map(~pollen_season(., value="hazel", date="date", method="95"))
+#'                 
 
 pollen_season <- function(x, value, date, method){
+        if (!(is.character(date))) stop("Object data should be a name of column containg dates.")
         x %>% split(., year(.[[date]])) %>%
                 map(~arrange_(., date)) %>% 
                 map(~pollen_season_single_year(., value=value, date=date, method=method)) %>% 
@@ -44,6 +46,10 @@ pollen_season <- function(x, value, date, method){
 }
 
 pollen_season_start <- function(method, value, date, threshold=NULL){
+        if (!(is.character(method))) stop("Object method should be of class character.")
+        if (!(is.numeric(value))) stop("Object value should be of class numeric.")
+        if (!(is.Date(date))) stop("Object date should be of class Date")
+        
         if (method=='90') {
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.05))
         } else if (method=='95'){
@@ -66,11 +72,17 @@ pollen_season_start <- function(method, value, date, threshold=NULL){
                 while(!(value[indx]>(sum(value)*0.01))){
                         indx <- indx + 1
                 }
+        } else {
+                stop("There isn't a method called ", method, "!")
         }
         date[indx]
 }     
 
 pollen_season_end <- function(method, value, date, threshold=NULL){
+        if (!(is.character(method))) stop("Object method should be of class character.")
+        if (!(is.numeric(value))) stop("Object value should be of class numeric.")
+        if (!(is.Date(date))) stop("Object data should be of class Date")
+        
         if (method=='90' | method=='Jager') {
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.95))
         } else if (method=='95'){
@@ -89,6 +101,8 @@ pollen_season_end <- function(method, value, date, threshold=NULL){
                         len_ab_thres <- len_ab_thres - 1
                         indx <- above_threshold[[len_ab_thres]]
                 }
+        } else {
+                stop("There isn't a method called: ", method)
         }
         date[indx]
 }

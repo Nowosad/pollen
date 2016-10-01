@@ -2,6 +2,7 @@
 
 export(pollen_season)
 importFrom(dplyr,arrange_)
+importFrom(lubridate,is.Date)
 importFrom(lubridate,year)
 importFrom(purrr,"%>%")
 importFrom(purrr,map)

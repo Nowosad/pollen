@@ -33,6 +33,7 @@ pollen_season(df2, value="alder", date="date", method="95")
 library('purrr')
 pollen_count \%>\% split(., .$site) \%>\% 
                 map(~pollen_season(., value="hazel", date="date", method="95"))
+                
 }
 \references{
 Nilsson S. and Persson S.: 1981, Tree pollen spectra in the Stockholm region (Sweden) 1973-1980, Grana 20, 179-182.
