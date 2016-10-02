@@ -2,7 +2,7 @@
 Pollen - tools for working with aerobiological data
 ===================================================
 
-[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
+[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen) [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](http://cran.r-project.org/package=pollen)
 
 Installation
 ------------
