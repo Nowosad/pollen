@@ -32,7 +32,7 @@ pollen_season(df2, value="alder", date="date", method="95")
 
 library('purrr')
 pollen_count \%>\% split(., .$site) \%>\% 
-                map(~pollen_season(., value="hazel", date="date", method="95"))
+                 map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
                 
 }
 \references{

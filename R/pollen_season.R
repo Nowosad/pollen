@@ -34,7 +34,7 @@
 #' 
 #' library('purrr')
 #' pollen_count %>% split(., .$site) %>% 
-#'                 map(~pollen_season(., value="hazel", date="date", method="95"))
+#'                  map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
 #'                 
 
 pollen_season <- function(x, value, date, method){
