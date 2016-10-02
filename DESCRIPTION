@@ -1,16 +1,19 @@
 Package: pollen
 Type: Package
 Title: Tools for Working with Aerobiological Data
-Version: 0.4.0.9000
+Version: 0.4.0.9001
 Authors@R: person("Jakub", "Nowosad", email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"))
-Description: A set of function for working with aerobiological data (e.g. calculation of pollen season limits).
+Description: A set of functions for working with aerobiological data (e.g. calculation of pollen season limits).
 Imports:
     lubridate,
     purrr,
     dplyr
+Suggests: 
+    testthat
+URL: https://github.com/Nowosad/pollen 
+BugReports: https://github.com/Nowosad/pollen/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Suggests: 
-    testthat
+
