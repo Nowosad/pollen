@@ -30,6 +30,8 @@ head(pollen_count)
 #> 6   Oz 2007-01-06     0     0     0
 ```
 
+### Pollen season
+
 ``` r
 df <- subset(pollen_count, site=='Oz')
 pollen_season(df, value="birch", date="date", method="95")
@@ -107,4 +109,19 @@ pollen_count %>% split(., .$site) %>%
 #> 38             Shire 2014 2014-03-01 2014-03-27
 #> 39             Shire 2015 2015-02-19 2015-03-30
 #> 40             Shire 2016 2016-01-17 2016-03-28
+```
+
+### Replacement of outliers
+
+``` r
+df <- subset(pollen_count, site=='Shire')
+new_df <- outliers_replacer(df, value="alder", date="date")
+identical(df, new_df)
+#> [1] FALSE
+```
+
+``` r
+library('purrr')
+new_pollen_count <- pollen_count %>% split(., .$site) %>% 
+                  map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
 ```
