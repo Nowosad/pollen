@@ -1,4 +1,4 @@
-#' A Outlier Replacer Function
+#' A Outliers Replacer Function
 #' 
 #' This function finds outliers in pollen time-series and replace them with backgroud values
 #' @param x A data.frame with dates and pollen count values
@@ -22,22 +22,22 @@
 #' @examples
 #'
 #' data(pollen_count)
-#' df <- subset(pollen_count, site=='Oz')
-#' new_df <- outlier_replacer(df, value="alder", date="date")
+#' df <- subset(pollen_count, site=='Shire')
+#' new_df <- outliers_replacer(df, value="birch", date="date")
 #' identical(df, new_df)
 #' 
 #' library('purrr')
 #' new_pollen_count <- pollen_count %>% split(., .$site) %>% 
-#'                  map_df(~outlier_replacer(., value="hazel", date="date", threshold=4))
+#'                  map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
 #'     
 
-outlier_replacer <- function(x, value, date, threshold=5, ...){
+outliers_replacer <- function(x, value, date, threshold=5, ...){
         x %>% split(., year(.[[date]])) %>%
-                map(~outlier_replacer_single_year(., value=value, threshold=threshold, ...)) %>% 
+                map(~outliers_replacer_single_year(., value=value, threshold=threshold, ...)) %>% 
                 map_df(rbind)
 }
 
-outlier_detector <- function(value, sum_percent=100, threshold){
+outliers_detector <- function(value, sum_percent=100, threshold){
         df <- data.frame(value, value_m2=lag(value, 2), value_p2=lead(value, 2),
                          value_m1=lag(value, 1), value_p1=lead(value, 1))
         df$backgroud <- threshold * (((df$value_m2 + df$value_p2)/6) + ((df$value_m1 + df$value_p1)/3))
@@ -49,8 +49,8 @@ single_outlier_replacer <- function(indx, value, threshold){
         
 }
 
-outlier_replacer_single_year <- function(x, value, threshold, ...){
-        indx <- outlier_detector(value=x[[value]], threshold=threshold, ...)
+outliers_replacer_single_year <- function(x, value, threshold, ...){
+        indx <- outliers_detector(value=x[[value]], threshold=threshold, ...)
         new_value <- indx %>% map_dbl(~(single_outlier_replacer(., value=x[[value]], threshold=threshold))) 
         x[[value]][indx] <- new_value
         x
