@@ -39,10 +39,12 @@
 
 pollen_season <- function(x, value, date, method){
         if (!(is.character(date))) stop("Object data should be a name of column containg dates.")
-        x %>% split(., year(.[[date]])) %>%
+        df <- x %>% split(., year(.[[date]])) %>%
                 map(~arrange_(., date)) %>% 
                 map(~pollen_season_single_year(., value=value, date=date, method=method)) %>% 
                 map_df(rbind)
+        if (anyNA(df)) warning("NA values were found in the input data.", immediate.=TRUE)
+        return(df)
 }
 
 pollen_season_start <- function(method, value, date, threshold=NULL){
