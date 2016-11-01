@@ -25,7 +25,16 @@ knitr::opts_chunk$set(
 <!--[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/lubridate)](https://cran.r-project.org/package=lubridate)-->
 ```
 
+pollen is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in pollen count data.
+
 ## Installation
+
+Get the released version from CRAN:
+
+```R
+install.packages("nowosad/pollen")
+```
+Or the development version from github:
 
 ```R
 devtools::install_github("nowosad/pollen")
@@ -42,35 +51,14 @@ data('pollen_count')
 head(pollen_count)
 ```
 
-### Pollen season
+### Pollen season calculation
 
 ```{r, df, eval=TRUE}
 df <- subset(pollen_count, site=='Oz')
 pollen_season(df, value="birch", date="date", method="95")
 ```
+More examples could be found in [the first package vignette](https://github.com/Nowosad/pollen/blob/master/vignettes/introduction.Rmd)
 
-```{r, df2, eval=TRUE}
-df2 <- subset(pollen_count, site=='Atlantis')
-pollen_season(df2, value="alder", date="date", method="95")
-```
+## Contributions
 
-```{r, purrr, eval=TRUE}
-library('purrr')
-pollen_count %>% split(., .$site) %>% 
-                map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
-```
-
-### Replacement of outliers
-
-```{r}
-df <- subset(pollen_count, site=='Shire')
-new_df <- outliers_replacer(df, value="alder", date="date")
-identical(df, new_df)
-```
-
-```{r}
-library('purrr')
-new_pollen_count <- pollen_count %>% split(., .$site) %>% 
-                  map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
-```
-
+[Feel free to submit issues and enhancement requests.](https://github.com/Nowosad/pollen/issues)
