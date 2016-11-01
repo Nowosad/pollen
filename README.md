@@ -58,7 +58,7 @@ pollen_season(df, value="birch", date="date", method="95")
 #> 10 2016 2016-04-06 2016-05-09
 ```
 
-More examples could be found in [the first package vignette](https://github.com/Nowosad/pollen/blob/master/vignettes/introduction.Rmd)
+More examples could be found in [the first package vignette](https://github.com/Nowosad/pollen/blob/master/vignettes/introduction.Rmd).
 
 Contributions
 -------------

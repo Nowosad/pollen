@@ -57,7 +57,7 @@ head(pollen_count)
 df <- subset(pollen_count, site=='Oz')
 pollen_season(df, value="birch", date="date", method="95")
 ```
-More examples could be found in [the first package vignette](https://github.com/Nowosad/pollen/blob/master/vignettes/introduction.Rmd)
+More examples could be found in [the first package vignette](https://github.com/Nowosad/pollen/blob/master/vignettes/introduction.Rmd).
 
 ## Contributions
 
