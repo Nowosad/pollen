@@ -1,0 +1,57 @@
+---
+title: "Introduction to the pollen package"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the pollen package}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+```
+
+## Examples
+
+```{r, lib, eval=TRUE}
+library('pollen')
+```
+
+```{r, dat, eval=TRUE}
+data('pollen_count')
+head(pollen_count)
+```
+
+### Pollen season
+
+```{r, df, eval=TRUE}
+df <- subset(pollen_count, site=='Oz')
+pollen_season(df, value="birch", date="date", method="95")
+```
+
+```{r, df2, eval=TRUE}
+df2 <- subset(pollen_count, site=='Atlantis')
+pollen_season(df2, value="alder", date="date", method="95")
+```
+
+```{r, purrr, eval=TRUE}
+library('purrr')
+pollen_count %>% split(., .$site) %>% 
+                map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
+```
+
+### Replacement of outliers
+
+```{r}
+df <- subset(pollen_count, site=='Shire')
+new_df <- outliers_replacer(df, value="alder", date="date")
+identical(df, new_df)
+```
+
+```{r}
+library('purrr')
+new_pollen_count <- pollen_count %>% split(., .$site) %>% 
+                  map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
+```
+
