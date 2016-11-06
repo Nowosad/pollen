@@ -41,6 +41,35 @@ pollen_count %>% split(., .$site) %>%
                 map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
 ```
 
+### Comparision of pollen season methods
+
+```{r}
+df <- subset(pollen_count, site=='Oz')
+
+ps_methods <- c("90", "95", "98", "Mesa", "Jager", "Lejoly")
+names(ps_methods) <- c("90", "95", "98", "Mesa", "Jager", "Lejoly")
+df_seasons <- ps_methods %>% map_df(~pollen_season(method=., x=df, value="birch", date="date"), .id="method") 
+head(df_seasons)
+```
+
+<!-- ```{r} -->
+<!-- library('dplyr') -->
+<!-- library('lubridate') -->
+<!-- library('tidyr') -->
+<!-- df_seasons <- df_seasons %>%  -->
+<!--         mutate(start_doy=yday(start), end_doy=yday(end)) %>%  -->
+<!--         gather(key, value, start_doy:end_doy) -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- library('ggplot2') -->
+<!-- ggplot(df_seasons, aes(value)) + -->
+<!--         geom_histogram() + -->
+<!--         facet_grid(key~method) -->
+<!-- ``` -->
+
+
 ### Replacement of outliers
 
 ```{r}
