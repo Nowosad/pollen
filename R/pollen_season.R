@@ -59,6 +59,7 @@ pollen_season_start <- function(method, value, date, threshold=NULL){
         } else if (method=='98'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.01))
         } else if (method=='Mesa'){
+                threshold <- 30
                 indx <- match(TRUE, value>threshold)
         } else if (method=='Jager'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.01))
@@ -92,6 +93,7 @@ pollen_season_end <- function(method, value, date, threshold=NULL){
         } else if (method=='98'){
                 indx <- match(TRUE, cumsum(value)>(sum(value)*0.99))
         } else if (method=='Mesa'){
+                threshold <- 30
                 above_threshold <- which(value>threshold)
                 len_ab_thres <- length(above_threshold)
                 indx <- above_threshold[[len_ab_thres]]
