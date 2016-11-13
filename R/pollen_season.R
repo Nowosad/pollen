@@ -4,7 +4,8 @@
 #' @param x A data.frame with dates and pollen count values
 #' @param value The name of the column with pollen count values
 #' @param date The name of the dates column
-#' @param method The pollen season method - "90", "95", "98", "Mesa", "Jager", or "Lejoly"
+#' @param method The pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"
+#' @param threshold A threshold value used for "Driessen" method
 #' 
 #' @return A data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year is.Date
@@ -18,6 +19,7 @@
 #' @references Sanchez-Mesa J.A., Smith M., Emberlin J., Allitt U., Caulton E. and Galan C.: 2003, Characteristics of grass pollen seasons in areas of southern Spain and the United Kingdom, Aerobiologia 19, 243-250.
 #' @references Jager S., Nilsson S., Berggren B., Pessi A.M., Helander M. and Ramfjord H.: 1996, Trends of some airborne tree pollen in the Nordic countries and Austria, 1980-1993. A comparison between Stockholm, Trondheim, Turku and Vienna, Grana 35, 171-178.
 #' @references Lejoly-Gabriel and Leuschner: 1983, Comparison of air-borne pollen at Louvain-la-Neuve (Belgium) and Basel (Switzerland) during 1979 and 1980, Grana 22, 59-64.
+#' @references Driessen M. N. B. M., Van Herpen R. M. A. and Smithuis, L. O. M. J.: 1990, Prediction of the start of the grass pollen season for the southern part of the Netherlands, Grana, 29(1), 79-86.
 #' 
 #' @keywords pollen, pollen season
 #'
@@ -37,11 +39,11 @@
 #'                  map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
 #'                 
 
-pollen_season <- function(x, value, date, method){
+pollen_season <- function(x, value, date, method, threshold=NULL){
         if (!(is.character(date))) stop("Object data should be a name of column containg dates.")
         df <- x %>% split(., year(.[[date]])) %>%
                 map(~arrange_(., date)) %>% 
-                map(~pollen_season_single_year(., value=value, date=date, method=method)) %>% 
+                map(~pollen_season_single_year(., value=value, date=date, method=method, threshold=threshold)) %>% 
                 map_df(rbind)
         if (anyNA(df)) warning("NA values were found in the input data.", immediate.=TRUE)
         return(df)
@@ -75,6 +77,8 @@ pollen_season_start <- function(method, value, date, threshold=NULL){
                 while(!(value[indx]>(sum(value)*0.01))){
                         indx <- indx + 1
                 }
+        } else if (method=='Driessen'){
+                indx <- match(TRUE, cumsum(value)>threshold)
         } else {
                 stop("There isn't a method called ", method, "!")
         }
@@ -105,17 +109,24 @@ pollen_season_end <- function(method, value, date, threshold=NULL){
                         len_ab_thres <- len_ab_thres - 1
                         indx <- above_threshold[[len_ab_thres]]
                 }
+        } else if (method=='Driessen'){
+                indx <- NULL 
         } else {
                 stop("There isn't a method called: ", method)
         }
         date[indx]
 }
 
-pollen_season_single_year <- function(x, value, date, method){
-        start <- pollen_season_start(method = method, x[[value]], x[[date]])
-        end <- pollen_season_end(method = method, x[[value]], x[[date]])
+pollen_season_single_year <- function(x, value, date, method, ...){
+        start <- pollen_season_start(method = method, x[[value]], x[[date]], ...)
+        end <- pollen_season_end(method = method, x[[value]], x[[date]], ...)
         year <- unique(year(x[[date]]))
-        data.frame(year=year, start=start, end=end)     
+        if (length(end)>0){
+                df <- data.frame(year=year, start=start, end=end)     
+        } else{
+                df <- data.frame(year=year, start=start)     
+        }
+        return(df)
 }
 
 subsequent_zeros <- function(value, indx, length=6){

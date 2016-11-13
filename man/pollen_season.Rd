@@ -4,7 +4,7 @@
 \alias{pollen_season}
 \title{A Pollen Season Function}
 \usage{
-pollen_season(x, value, date, method)
+pollen_season(x, value, date, method, threshold = NULL)
 }
 \arguments{
 \item{x}{A data.frame with dates and pollen count values}
@@ -13,7 +13,9 @@ pollen_season(x, value, date, method)
 
 \item{date}{The name of the dates column}
 
-\item{method}{The pollen season method - "90", "95", "98", "Mesa", "Jager", or "Lejoly"}
+\item{method}{The pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"}
+
+\item{threshold}{A threshold value used for "Driessen" method}
 }
 \value{
 A data.frame object with year, date of pollen season start and date of pollen season end
@@ -49,6 +51,8 @@ Sanchez-Mesa J.A., Smith M., Emberlin J., Allitt U., Caulton E. and Galan C.: 20
 Jager S., Nilsson S., Berggren B., Pessi A.M., Helander M. and Ramfjord H.: 1996, Trends of some airborne tree pollen in the Nordic countries and Austria, 1980-1993. A comparison between Stockholm, Trondheim, Turku and Vienna, Grana 35, 171-178.
 
 Lejoly-Gabriel and Leuschner: 1983, Comparison of air-borne pollen at Louvain-la-Neuve (Belgium) and Basel (Switzerland) during 1979 and 1980, Grana 22, 59-64.
+
+Driessen M. N. B. M., Van Herpen R. M. A. and Smithuis, L. O. M. J.: 1990, Prediction of the start of the grass pollen season for the southern part of the Netherlands, Grana, 29(1), 79-86.
 }
 \keyword{pollen}
 \keyword{pollen,}
