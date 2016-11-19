@@ -78,6 +78,7 @@ pollen_season_start <- function(method, value, date, threshold=NULL){
                         indx <- indx + 1
                 }
         } else if (method=='Driessen'){
+                if (is.null(threshold)) stop("Threshold value is missing.")
                 indx <- match(TRUE, cumsum(value)>threshold)
         } else {
                 stop("There isn't a method called ", method, "!")

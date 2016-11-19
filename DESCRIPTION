@@ -1,10 +1,10 @@
 Package: pollen
 Type: Package
 Title: Tools for Working with Aerobiological Data
-Version: 0.5.4.9000
+Version: 0.50.0
 Authors@R: person("Jakub", "Nowosad", email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"))
-Description: A set of functions for working with aerobiological data (e.g. calculation of pollen season limits, repleacement of outliers).
+Description: A set of functions for working with aerobiological data (e.g. calculation of pollen season limits, replacement of outliers).
 Imports:
     lubridate,
     purrr,
