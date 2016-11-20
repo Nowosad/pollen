@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 [![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
 [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen)
-[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
 
 ```{r, echo=FALSE, eval=FALSE}
 <!--[![Coverage Status](https://img.shields.io/codecov/c/github/hadley/lubridate/master.svg)](https://codecov.io/github/hadley/lubridate?branch=master)-->
