@@ -2,9 +2,9 @@
 Pollen - tools for working with aerobiological data
 ===================================================
 
-[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen) [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](http://cran.r-project.org/package=pollen)
+[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen) [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen) [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
 
-pollen is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in pollen count data.
+`pollen` is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in pollen count data.
 
 Installation
 ------------
@@ -58,7 +58,7 @@ pollen_season(df, value="birch", date="date", method="95")
 #> 10 2016 2016-04-06 2016-05-09
 ```
 
-More examples could be found in [the first package vignette](https://github.com/Nowosad/pollen/blob/master/vignettes/intro.Rmd).
+More examples could be found in [the first package vignette](https://cdn.rawgit.com/Nowosad/pollen/master/vignettes/intro.html).
 
 Contributions
 -------------
