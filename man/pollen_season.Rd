@@ -57,4 +57,3 @@ Driessen M. N. B. M., Van Herpen R. M. A. and Smithuis, L. O. M. J.: 1990, Predi
 \keyword{pollen}
 \keyword{pollen,}
 \keyword{season}
-

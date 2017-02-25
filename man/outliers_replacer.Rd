@@ -41,4 +41,3 @@ Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic Distribution Mo
 \keyword{outliers}
 \keyword{pollen}
 \keyword{pollen,}
-

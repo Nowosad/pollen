@@ -34,4 +34,3 @@ gdd(df, tmax='tmax', tmin='tmin', tbase=5, tbase_max=30)
 }
 \keyword{meteo,}
 \keyword{temperature}
-

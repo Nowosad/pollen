@@ -8,4 +8,3 @@
 \description{
 The pollen package offers a set of functions for working with aerobiological data.
 }
-

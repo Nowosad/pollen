@@ -31,6 +31,8 @@ gdd <- function(x, tmax, tmin, tbase, tbase_max){
                 ifelse(test = x > tbase_max, yes = tbase_max, no = x)
         } 
         
+        x <- as.data.frame(x)
+
         tmax_adjusted <- adjust_for_tbase(x[, tmax], tbase)
         tmin_adjusted <- adjust_for_tbase(x[, tmin], tbase)
         
