@@ -3,11 +3,11 @@
 #' This function calculates growing degree days (GDD) using the average of the daily maximum
 #' and minimum temperatures, a base temperature and a maximum base temperature
 #'
-#' @param tmax - daily maximum temperature 
-#' @param tmin - daily minimum temperature
-#' @param tbase - base temperature  
-#' @param tbase_max - maximum base temperature
-#' @param x - data.frame object containing the data
+#' @param tmax daily maximum temperature 
+#' @param tmin daily minimum temperature
+#' @param tbase base temperature  
+#' @param tbase_max maximum base temperature
+#' @param x data.frame object containing the data
 #'
 #' @return a numeric vector with GDD values
 #' 

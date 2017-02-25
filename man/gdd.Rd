@@ -7,15 +7,15 @@
 gdd(x, tmax, tmin, tbase, tbase_max)
 }
 \arguments{
-\item{x}{- data.frame object containing the data}
+\item{x}{data.frame object containing the data}
 
-\item{tmax}{- daily maximum temperature}
+\item{tmax}{daily maximum temperature}
 
-\item{tmin}{- daily minimum temperature}
+\item{tmin}{daily minimum temperature}
 
-\item{tbase}{- base temperature}
+\item{tbase}{base temperature}
 
-\item{tbase_max}{- maximum base temperature}
+\item{tbase_max}{maximum base temperature}
 }
 \value{
 a numeric vector with GDD values
