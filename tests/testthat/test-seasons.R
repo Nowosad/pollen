@@ -3,7 +3,6 @@ expect_df <- function(x) expect_is(x, "data.frame")
 expect_numeric <- function(x) expect_is(x, "numeric")
 expect_date <- function(x) expect_is(x, "Date")
 
-
 test_that("results are proper",{
         data(pollen_count)
         df <- subset(pollen_count, site=='Oz')
