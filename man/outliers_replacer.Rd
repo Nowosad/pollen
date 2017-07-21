@@ -4,7 +4,7 @@
 \alias{outliers_replacer}
 \title{A Outliers Replacer Function}
 \usage{
-outliers_replacer(x, value, date, threshold = 5, ...)
+outliers_replacer(x, value, date, threshold = 5, sum_percent = 100)
 }
 \arguments{
 \item{x}{A data.frame with dates and pollen count values}
@@ -15,7 +15,7 @@ outliers_replacer(x, value, date, threshold = 5, ...)
 
 \item{threshold}{A number indicating how many times outling value needs to be larger than the backgroud to be replaces (default is 5)}
 
-\item{...}{Other arguments, such as `sum_percent`}
+\item{sum_percent}{A sum_percent parameter}
 }
 \value{
 A new data.frame object with replaced outliers

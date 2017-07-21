@@ -5,7 +5,7 @@
 #' @param value The name of the column with pollen count values
 #' @param date The name of the dates column
 #' @param threshold A number indicating how many times outling value needs to be larger than the backgroud to be replaces (default is 5)
-#' @param ... Other arguments, such as `sum_percent`
+#' @param sum_percent A sum_percent parameter
 #' 
 #' @return A new data.frame object with replaced outliers
 #' @importFrom lubridate year
@@ -30,14 +30,13 @@
 #'                  map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
 #'     
 
-outliers_replacer <- function(x, value, date, threshold=5, ...){
+outliers_replacer <- function(x, value, date, threshold=5, sum_percent=100){
         x %>% split(., year(.[[date]])) %>%
-                map(~outliers_replacer_single_year(., value=value, threshold=threshold, ...)) %>% 
-                map_df(rbind)
+                map_df(~outliers_replacer_single_year(., value=value, threshold=threshold, sum_percent=sum_percent))
 }
 
-outliers_replacer_single_year <- function(x, value, threshold, ...){
-        indx <- outliers_detector(value=x[[value]], threshold=threshold, ...)
+outliers_replacer_single_year <- function(x, value, threshold, sum_percent){
+        indx <- outliers_detector(value=x[[value]], threshold=threshold, sum_percent=sum_percent)
         new_value <- indx %>% map_dbl(~(single_outlier_replacer(., value=x[[value]], threshold=threshold))) 
         x[[value]][indx] <- new_value
         return(x)
