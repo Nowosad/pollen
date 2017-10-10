@@ -12,7 +12,7 @@ Installation
 Get the released version from CRAN:
 
 ``` r
-install.packages("nowosad/pollen")
+install.packages("pollen")
 ```
 
 Or the development version from github:
