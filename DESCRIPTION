@@ -6,12 +6,16 @@ Authors@R: person("Jakub", "Nowosad",
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-1057-3721"))
-Description: Supports analysis of aerobiological data. Available features include determination of pollen season limits, replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>), and calculation of growing degree days.
+Description: Supports analysis of aerobiological data. 
+    Available features include determination of pollen season limits, 
+    replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>),
+    and calculation of growing degree days.
 Imports:
     lubridate,
     purrr,
     dplyr
 Suggests:
+    covr,
     testthat,
     knitr,
     rmarkdown
