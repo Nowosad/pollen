@@ -25,11 +25,11 @@ Examples
 --------
 
 ``` r
-library('pollen')
+library(pollen)
 ```
 
 ``` r
-data('pollen_count')
+data("pollen_count")
 head(pollen_count)
 #>   site       date alder birch hazel
 #> 1   Oz 2007-01-01     0     0     0
@@ -43,8 +43,8 @@ head(pollen_count)
 ### Pollen season calculation
 
 ``` r
-df <- subset(pollen_count, site=='Oz')
-pollen_season(df, value="birch", date="date", method="95")
+df <- subset(pollen_count, site == "Oz")
+pollen_season(df, value = "birch", date = "date", method = "95")
 #>    year      start        end
 #> 1  2007 2007-03-31 2007-05-03
 #> 2  2008 2008-04-19 2008-05-07

@@ -44,19 +44,19 @@ devtools::install_github("nowosad/pollen")
 ## Examples
 
 ```{r, lib, eval=TRUE}
-library('pollen')
+library(pollen)
 ```
 
 ```{r, dat, eval=TRUE}
-data('pollen_count')
+data("pollen_count")
 head(pollen_count)
 ```
 
 ### Pollen season calculation
 
 ```{r, df, eval=TRUE}
-df <- subset(pollen_count, site=='Oz')
-pollen_season(df, value="birch", date="date", method="95")
+df <- subset(pollen_count, site == "Oz")
+pollen_season(df, value = "birch", date = "date", method = "95")
 ```
 
 More examples could be found in [the first package vignette](https://cdn.rawgit.com/Nowosad/pollen/master/vignettes/intro.html).
