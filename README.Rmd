@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -26,7 +24,8 @@ knitr::opts_chunk$set(
 <!--[![Coverage Status](https://img.shields.io/codecov/c/github/hadley/lubridate/master.svg)](https://codecov.io/github/hadley/lubridate?branch=master)-->
 ```
 
-`pollen` is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in pollen count data.
+`pollen` is a set of functions for working with aerobiological data. 
+It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in a pollen count data.
 
 ## Installation
 
