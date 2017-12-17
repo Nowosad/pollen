@@ -1,4 +1,4 @@
-library('testthat')
-library('pollen')
+library("testthat")
+library("pollen")
 
 test_check("pollen")
