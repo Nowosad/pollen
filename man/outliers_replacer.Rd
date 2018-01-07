@@ -31,9 +31,9 @@ new_df <- outliers_replacer(df, value="birch", date="date")
 identical(df, new_df)
 
 library('purrr')
-new_pollen_count <- pollen_count \%>\% split(., .$site) \%>\% 
+new_pollen_count <- pollen_count \%>\% split(., .$site) \%>\%
                  map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
-    
+
 }
 \references{
 Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic Distribution Models for Airborne Pollen Grains and Fungal Spore Season Dynamics, Aerobiologia 30(4), 369-83.

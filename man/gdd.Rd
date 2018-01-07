@@ -4,11 +4,9 @@
 \alias{gdd}
 \title{Growing Degree Days Function}
 \usage{
-gdd(x, tmax, tmin, tbase, tbase_max)
+gdd(tmax, tmin, tbase, tbase_max)
 }
 \arguments{
-\item{x}{data.frame object containing the data}
-
 \item{tmax}{daily maximum temperature}
 
 \item{tmin}{daily minimum temperature}
@@ -28,7 +26,7 @@ and minimum temperatures, a base temperature and a maximum base temperature
 set.seed(25)
 df <- data.frame(tmax=runif(100, 6, 10), tmin=runif(100, 4,6))
 
-gdd(df, tmax='tmax', tmin='tmin', tbase=5, tbase_max=30)
+gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 30)
 
 
 }

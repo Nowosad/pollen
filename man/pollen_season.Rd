@@ -33,9 +33,9 @@ df2 <- subset(pollen_count, site=='Atlantis')
 pollen_season(df2, value="alder", date="date", method="95")
 
 library('purrr')
-pollen_count \%>\% split(., .$site) \%>\% 
+pollen_count \%>\% split(., .$site) \%>\%
                  map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
-                
+
 }
 \references{
 Nilsson S. and Persson S.: 1981, Tree pollen spectra in the Stockholm region (Sweden) 1973-1980, Grana 20, 179-182.
