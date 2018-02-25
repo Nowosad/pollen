@@ -4,21 +4,19 @@
 \alias{outliers_replacer}
 \title{A Outliers Replacer Function}
 \usage{
-outliers_replacer(x, value, date, threshold = 5, sum_percent = 100)
+outliers_replacer(value, date, threshold = 5, sum_percent = 100)
 }
 \arguments{
-\item{x}{A data.frame with dates and pollen count values}
+\item{value}{pollen concentration values}
 
-\item{value}{The name of the column with pollen count values}
+\item{date}{dates}
 
-\item{date}{The name of the dates column}
+\item{threshold}{anumber indicating how many times outling value needs to be larger than the backgroud to be replaces (default is 5)}
 
-\item{threshold}{A number indicating how many times outling value needs to be larger than the backgroud to be replaces (default is 5)}
-
-\item{sum_percent}{A sum_percent parameter}
+\item{sum_percent}{a sum_percent parameter}
 }
 \value{
-A new data.frame object with replaced outliers
+a new data.frame object with replaced outliers
 }
 \description{
 This function finds outliers in pollen time-series and replace them with backgroud values
@@ -27,12 +25,12 @@ This function finds outliers in pollen time-series and replace them with backgro
 
 data(pollen_count)
 df <- subset(pollen_count, site=='Shire')
-new_df <- outliers_replacer(df, value="birch", date="date")
+new_df <- outliers_replacer(df$birch, df$date)
 identical(df, new_df)
 
 library('purrr')
 new_pollen_count <- pollen_count \%>\% split(., .$site) \%>\%
-                 map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
+       map_df(~outliers_replacer(value=.$hazel, date=.$date, threshold=4))
 
 }
 \references{

@@ -1,13 +1,12 @@
 #' A Pollen Season Function
 #'
 #' This function calculates the start and the end of pollen season for each year
-#' @param x A data.frame with dates and pollen count values
-#' @param value The name of the column with pollen count values
-#' @param date The name of the dates column
-#' @param method The pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"
-#' @param threshold A threshold value used for "Driessen" method
+#' @param value pollen concentration values
+#' @param date dates 
+#' @param method the pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"
+#' @param threshold a threshold value used for "Driessen" method
 #'
-#' @return A data.frame object with year, date of pollen season start and date of pollen season end
+#' @return a data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year is.Date
 #' @importFrom purrr %>% map map_df
 #' @importFrom dplyr arrange_
@@ -29,25 +28,24 @@
 #'
 #' data(pollen_count)
 #' df <- subset(pollen_count, site=='Oz')
-#' pollen_season(df, value="birch", date="date", method="95")
+#' pollen_season(value=df$birch, date=df$date, method="95")
 #'
 #' df2 <- subset(pollen_count, site=='Atlantis')
-#' pollen_season(df2, value="alder", date="date", method="95")
+#' pollen_season(value=df2$alder, date=df2$date, method="95")
 #'
 #' library('purrr')
 #' pollen_count %>% split(., .$site) %>%
-#'                  map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
+#'                  map_df(~pollen_season(value=.$hazel, date=.$date, method="95"), .id="site")
 #'
 
-pollen_season <- function(x, value, date, method, threshold=NULL) {
-  if (!(is.character(date))) stop("Object data should be a name of column containg dates.")
-  df <- x %>%
-    split(., year(.[[date]])) %>%
-    map(~arrange_(., date)) %>%
-    map(~pollen_season_single_year(., value = value, date = date, method = method, threshold = threshold)) %>%
-    map_df(rbind)
-  if (anyNA(df)) warning("NA values were found in the input data.", immediate. = TRUE)
-  return(df)
+pollen_season <- function(value, date, method, threshold=NULL) {
+        df <- data.frame(value = value, date = date) %>%
+                split(., year(.[["date"]])) %>%
+                map(~arrange_(., "date")) %>%
+                map(~pollen_season_single_year(., value = "value", date = "date", method = method, threshold = threshold)) %>%
+                map_df(rbind)
+        if (anyNA(df)) warning("NA values were found in the input data.", immediate. = TRUE)
+        return(df)
 }
 
 pollen_season_start <- function(method, value, date, threshold=NULL) {

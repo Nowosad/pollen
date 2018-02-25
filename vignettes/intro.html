@@ -4,14 +4,14 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2016-11-05" />
+<meta name="date" content="2018-02-25" />
 
 <title>Introduction to the pollen package</title>
 
@@ -68,14 +68,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 <h1 class="title toc-ignore">Introduction to the pollen package</h1>
-<h4 class="date"><em>2016-11-05</em></h4>
+<h4 class="date"><em>2018-02-25</em></h4>
 
 
 
 <div id="examples" class="section level2">
 <h2>Examples</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">'pollen'</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">'pollen_count'</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;pollen&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;pollen_count&quot;</span>)
 <span class="kw">head</span>(pollen_count)
 <span class="co">#&gt;   site       date alder birch hazel</span>
 <span class="co">#&gt; 1   Oz 2007-01-01     0     0     0</span>
@@ -86,8 +86,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt; 6   Oz 2007-01-06     0     0     0</span></code></pre></div>
 <div id="pollen-season" class="section level3">
 <h3>Pollen season</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site==<span class="st">'Oz'</span>)
-<span class="kw">pollen_season</span>(df, <span class="dt">value=</span><span class="st">&quot;birch&quot;</span>, <span class="dt">date=</span><span class="st">&quot;date&quot;</span>, <span class="dt">method=</span><span class="st">&quot;95&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site <span class="op">==</span><span class="st"> &quot;Oz&quot;</span>)
+<span class="kw">pollen_season</span>(<span class="dt">value =</span> df<span class="op">$</span>birch, <span class="dt">date =</span> df<span class="op">$</span>date, <span class="dt">method =</span> <span class="st">&quot;95&quot;</span>)
 <span class="co">#&gt;    year      start        end</span>
 <span class="co">#&gt; 1  2007 2007-03-31 2007-05-03</span>
 <span class="co">#&gt; 2  2008 2008-04-19 2008-05-07</span>
@@ -99,9 +99,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt; 8  2014 2014-04-08 2014-05-10</span>
 <span class="co">#&gt; 9  2015 2015-04-08 2015-04-30</span>
 <span class="co">#&gt; 10 2016 2016-04-06 2016-05-09</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site==<span class="st">'Atlantis'</span>)
-<span class="kw">pollen_season</span>(df2, <span class="dt">value=</span><span class="st">&quot;alder&quot;</span>, <span class="dt">date=</span><span class="st">&quot;date&quot;</span>, <span class="dt">method=</span><span class="st">&quot;95&quot;</span>)
-<span class="co">#&gt; Warning in pollen_season(df2, value = &quot;alder&quot;, date = &quot;date&quot;, method =</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site <span class="op">==</span><span class="st"> &quot;Atlantis&quot;</span>)
+<span class="kw">pollen_season</span>(<span class="dt">value =</span> df2<span class="op">$</span>alder, <span class="dt">date =</span> df2<span class="op">$</span>date, <span class="dt">method =</span> <span class="st">&quot;95&quot;</span>)
+<span class="co">#&gt; Warning in pollen_season(value = df2$alder, date = df2$date, method =</span>
 <span class="co">#&gt; &quot;95&quot;): NA values were found in the input data.</span>
 <span class="co">#&gt;    year      start        end</span>
 <span class="co">#&gt; 1  2007       &lt;NA&gt;       &lt;NA&gt;</span>
@@ -114,9 +114,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt; 8  2014 2014-02-11 2014-04-29</span>
 <span class="co">#&gt; 9  2015 2015-03-19 2015-04-04</span>
 <span class="co">#&gt; 10 2016 2016-03-14 2016-04-23</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">'purrr'</span>)
-pollen_count %&gt;%<span class="st"> </span><span class="kw">split</span>(., .$site) %&gt;%<span class="st"> </span>
-<span class="st">                </span><span class="kw">map_df</span>(~<span class="kw">pollen_season</span>(., <span class="dt">value=</span><span class="st">&quot;hazel&quot;</span>, <span class="dt">date=</span><span class="st">&quot;date&quot;</span>, <span class="dt">method=</span><span class="st">&quot;95&quot;</span>), <span class="dt">.id=</span><span class="st">&quot;site&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;purrr&quot;</span>)
+pollen_count <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">split</span>(., .<span class="op">$</span>site) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">map_df</span>(<span class="op">~</span><span class="kw">pollen_season</span>(<span class="dt">value =</span> .<span class="op">$</span>hazel, <span class="dt">date =</span> .<span class="op">$</span>date, <span class="dt">method =</span> <span class="st">&quot;95&quot;</span>), <span class="dt">.id =</span> <span class="st">&quot;site&quot;</span>)
 <span class="co">#&gt;                 site year      start        end</span>
 <span class="co">#&gt; 1           Atlantis 2007 2007-01-29 2007-03-19</span>
 <span class="co">#&gt; 2           Atlantis 2008 2008-03-23 2008-04-14</span>
@@ -161,11 +162,11 @@ pollen_count %&gt;%<span class="st"> </span><span class="kw">split</span>(., .$s
 </div>
 <div id="comparision-of-pollen-season-methods" class="section level3">
 <h3>Comparision of pollen season methods</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site==<span class="st">'Oz'</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site <span class="op">==</span><span class="st"> &quot;Oz&quot;</span>)
 
 ps_methods &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;90&quot;</span>, <span class="st">&quot;95&quot;</span>, <span class="st">&quot;98&quot;</span>, <span class="st">&quot;Mesa&quot;</span>, <span class="st">&quot;Jager&quot;</span>, <span class="st">&quot;Lejoly&quot;</span>)
 <span class="kw">names</span>(ps_methods) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;90&quot;</span>, <span class="st">&quot;95&quot;</span>, <span class="st">&quot;98&quot;</span>, <span class="st">&quot;Mesa&quot;</span>, <span class="st">&quot;Jager&quot;</span>, <span class="st">&quot;Lejoly&quot;</span>)
-df_seasons &lt;-<span class="st"> </span>ps_methods %&gt;%<span class="st"> </span><span class="kw">map_df</span>(~<span class="kw">pollen_season</span>(<span class="dt">method=</span>., <span class="dt">x=</span>df, <span class="dt">value=</span><span class="st">&quot;birch&quot;</span>, <span class="dt">date=</span><span class="st">&quot;date&quot;</span>), <span class="dt">.id=</span><span class="st">&quot;method&quot;</span>) 
+df_seasons &lt;-<span class="st"> </span>ps_methods <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_df</span>(<span class="op">~</span><span class="kw">pollen_season</span>(<span class="dt">method =</span> ., <span class="dt">value =</span> df<span class="op">$</span>birch, <span class="dt">date =</span> df<span class="op">$</span>date), <span class="dt">.id =</span> <span class="st">&quot;method&quot;</span>)
 <span class="kw">head</span>(df_seasons)
 <span class="co">#&gt;   method year      start        end</span>
 <span class="co">#&gt; 1     90 2007 2007-03-31 2007-04-29</span>
@@ -191,13 +192,14 @@ df_seasons &lt;-<span class="st"> </span>ps_methods %&gt;%<span class="st"> </sp
 </div>
 <div id="replacement-of-outliers" class="section level3">
 <h3>Replacement of outliers</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site==<span class="st">'Shire'</span>)
-new_df &lt;-<span class="st"> </span><span class="kw">outliers_replacer</span>(df, <span class="dt">value=</span><span class="st">&quot;alder&quot;</span>, <span class="dt">date=</span><span class="st">&quot;date&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site <span class="op">==</span><span class="st"> &quot;Shire&quot;</span>)
+new_df &lt;-<span class="st"> </span><span class="kw">outliers_replacer</span>(<span class="dt">value =</span> df<span class="op">$</span>alder, <span class="dt">date =</span> df<span class="op">$</span>date)
 <span class="kw">identical</span>(df, new_df)
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">'purrr'</span>)
-new_pollen_count &lt;-<span class="st"> </span>pollen_count %&gt;%<span class="st"> </span><span class="kw">split</span>(., .$site) %&gt;%<span class="st"> </span>
-<span class="st">                  </span><span class="kw">map_df</span>(~<span class="kw">outliers_replacer</span>(., <span class="dt">value=</span><span class="st">&quot;hazel&quot;</span>, <span class="dt">date=</span><span class="st">&quot;date&quot;</span>, <span class="dt">threshold=</span><span class="dv">4</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;purrr&quot;</span>)
+new_pollen_count &lt;-<span class="st"> </span>pollen_count <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">split</span>(., .<span class="op">$</span>site) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">map_df</span>(<span class="op">~</span><span class="kw">outliers_replacer</span>(<span class="dt">value =</span> .<span class="op">$</span>hazel, <span class="dt">date =</span> .<span class="op">$</span>date, <span class="dt">threshold =</span> <span class="dv">4</span>))</code></pre></div>
 </div>
 </div>
 
@@ -208,7 +210,7 @@ new_pollen_count &lt;-<span class="st"> </span>pollen_count %&gt;%<span class="s
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

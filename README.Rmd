@@ -55,7 +55,7 @@ head(pollen_count)
 
 ```{r, df, eval=TRUE}
 df <- subset(pollen_count, site == "Oz")
-pollen_season(df, value = "birch", date = "date", method = "95")
+pollen_season(value = df$birch, date = df$date, method = "95")
 ```
 
 More examples could be found in [the first package vignette](https://cdn.rawgit.com/Nowosad/pollen/master/vignettes/intro.html).

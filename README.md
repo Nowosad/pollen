@@ -45,7 +45,7 @@ head(pollen_count)
 
 ``` r
 df <- subset(pollen_count, site == "Oz")
-pollen_season(df, value = "birch", date = "date", method = "95")
+pollen_season(value = df$birch, date = df$date, method = "95")
 #>    year      start        end
 #> 1  2007 2007-03-31 2007-05-03
 #> 2  2008 2008-04-19 2008-05-07

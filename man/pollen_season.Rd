@@ -4,21 +4,19 @@
 \alias{pollen_season}
 \title{A Pollen Season Function}
 \usage{
-pollen_season(x, value, date, method, threshold = NULL)
+pollen_season(value, date, method, threshold = NULL)
 }
 \arguments{
-\item{x}{A data.frame with dates and pollen count values}
+\item{value}{pollen concentration values}
 
-\item{value}{The name of the column with pollen count values}
+\item{date}{dates}
 
-\item{date}{The name of the dates column}
+\item{method}{the pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"}
 
-\item{method}{The pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"}
-
-\item{threshold}{A threshold value used for "Driessen" method}
+\item{threshold}{a threshold value used for "Driessen" method}
 }
 \value{
-A data.frame object with year, date of pollen season start and date of pollen season end
+a data.frame object with year, date of pollen season start and date of pollen season end
 }
 \description{
 This function calculates the start and the end of pollen season for each year
@@ -27,14 +25,14 @@ This function calculates the start and the end of pollen season for each year
 
 data(pollen_count)
 df <- subset(pollen_count, site=='Oz')
-pollen_season(df, value="birch", date="date", method="95")
+pollen_season(value=df$birch, date=df$date, method="95")
 
 df2 <- subset(pollen_count, site=='Atlantis')
-pollen_season(df2, value="alder", date="date", method="95")
+pollen_season(value=df2$alder, date=df2$date, method="95")
 
 library('purrr')
 pollen_count \%>\% split(., .$site) \%>\%
-                 map_df(~pollen_season(., value="hazel", date="date", method="95"), .id="site")
+                 map_df(~pollen_season(value=.$hazel, date=.$date, method="95"), .id="site")
 
 }
 \references{

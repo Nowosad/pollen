@@ -1,13 +1,12 @@
 #' A Outliers Replacer Function
 #'
 #' This function finds outliers in pollen time-series and replace them with backgroud values
-#' @param x A data.frame with dates and pollen count values
-#' @param value The name of the column with pollen count values
-#' @param date The name of the dates column
-#' @param threshold A number indicating how many times outling value needs to be larger than the backgroud to be replaces (default is 5)
-#' @param sum_percent A sum_percent parameter
+#' @param value pollen concentration values
+#' @param date dates 
+#' @param threshold anumber indicating how many times outling value needs to be larger than the backgroud to be replaces (default is 5)
+#' @param sum_percent a sum_percent parameter
 #'
-#' @return A new data.frame object with replaced outliers
+#' @return a new data.frame object with replaced outliers
 #' @importFrom lubridate year
 #' @importFrom purrr %>% map map_df map_dbl
 #' @importFrom dplyr lead lag
@@ -22,18 +21,18 @@
 #'
 #' data(pollen_count)
 #' df <- subset(pollen_count, site=='Shire')
-#' new_df <- outliers_replacer(df, value="birch", date="date")
+#' new_df <- outliers_replacer(df$birch, df$date)
 #' identical(df, new_df)
-#'
+#' 
 #' library('purrr')
 #' new_pollen_count <- pollen_count %>% split(., .$site) %>%
-#'                  map_df(~outliers_replacer(., value="hazel", date="date", threshold=4))
+#'        map_df(~outliers_replacer(value=.$hazel, date=.$date, threshold=4))
 #'
 
-outliers_replacer <- function(x, value, date, threshold=5, sum_percent=100) {
-  x %>%
-    split(., year(.[[date]])) %>%
-    map_df(~outliers_replacer_single_year(., value = value, threshold = threshold, sum_percent = sum_percent))
+outliers_replacer <- function(value, date, threshold=5, sum_percent=100) {
+        data.frame(value = value, date = date) %>%
+                split(., year(.[["date"]])) %>%
+                map_df(~outliers_replacer_single_year(., value = "value", threshold = threshold, sum_percent = sum_percent))
 }
 
 outliers_replacer_single_year <- function(x, value, threshold, sum_percent) {
