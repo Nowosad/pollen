@@ -12,11 +12,23 @@ vignette: >
 knitr::opts_chunk$set(collapse = T, comment = "#>")
 ```
 
-## Examples
+`pollen` is a set of functions for working with aerobiological data. 
+It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in a pollen count data.
 
 ```{r, lib, eval=TRUE}
-library("pollen")
+library(pollen)
 ```
+
+## Examples
+
+In the examples below, we will use the `pollen_count` dataset available in the **pollen** package.
+It has five variables:
+
+- site - a name of the aerobiological monitoring site (one of "Atlantis", "Hundred Acre Wood", "Oz", "Shire")
+- date - a date of the measurement
+- alder - pollen concentration of alder (grains/m3)
+- birch - pollen concentration of birch (grains/m3)
+- hazel - pollen concentration of hazel (grains/m3)
 
 ```{r, dat, eval=TRUE}
 data("pollen_count")
@@ -25,31 +37,48 @@ head(pollen_count)
 
 ### Pollen season
 
+The most important function in this package, `pollen_season()` determines pollen season limits.
+It can be calculated independently for each site, for example Oz:
+
 ```{r, df, eval=TRUE}
 df <- subset(pollen_count, site == "Oz")
 pollen_season(value = df$birch, date = df$date, method = "95")
 ```
+
+... and Atlantis:
 
 ```{r, df2, eval=TRUE}
 df2 <- subset(pollen_count, site == "Atlantis")
 pollen_season(value = df2$alder, date = df2$date, method = "95")
 ```
 
+`NA` is returned for years with missing values in the data, as you can see above.
+
+In combination with the **purrr** package (or the base `apply()` function), it is possible to calculate pollen season limits for many sites:
+
 ```{r, purrr, eval=TRUE}
-library("purrr")
+library(purrr)
 pollen_count %>%
   split(., .$site) %>%
-  map_df(~pollen_season(value = .$hazel, date = .$date, method = "95"), .id = "site")
+  map_dfr(~pollen_season(value = .$hazel, date = .$date, method = "95"), .id = "site")
 ```
 
-### Comparision of pollen season methods
+### Comparision of the pollen season methods
+
+Next possibility is to compare many methods for determination of pollen season limits for one measurement site.
+Let's try it for Oz:
 
 ```{r}
 df <- subset(pollen_count, site == "Oz")
+```
 
+We just need to provide a vector of names with the methods and use it in the `map_dfr()` function:
+
+```{r}
 ps_methods <- c("90", "95", "98", "Mesa", "Jager", "Lejoly")
-names(ps_methods) <- c("90", "95", "98", "Mesa", "Jager", "Lejoly")
-df_seasons <- ps_methods %>% map_df(~pollen_season(method = ., value = df$birch, date = df$date), .id = "method")
+names(ps_methods) <- ps_methods
+df_seasons <- ps_methods %>%
+  map_dfr(~pollen_season(method = ., value = df$birch, date = df$date), .id = "method")
 head(df_seasons)
 ```
 
@@ -73,16 +102,22 @@ head(df_seasons)
 
 ### Replacement of outliers
 
+The **pollen** package also implements a method for replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>) with the `outliers_replacer()` function.
+`outliers_replacer()` accepts a column with concentration, a column with date, and a `threshold` - a number indicating how many times outlying value needs to be larger than the background to be replaced.
+This method can be applied on a single site:
+
 ```{r}
 df <- subset(pollen_count, site == "Shire")
 new_df <- outliers_replacer(value = df$alder, date = df$date)
 identical(df, new_df)
 ```
 
+Or a group of sites:
+
 ```{r}
 library("purrr")
 new_pollen_count <- pollen_count %>%
   split(., .$site) %>%
-  map_df(~outliers_replacer(value = .$hazel, date = .$date, threshold = 4))
+  map_dfr(~outliers_replacer(value = .$hazel, date = .$date, threshold = 4))
 ```
 

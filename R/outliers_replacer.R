@@ -1,9 +1,9 @@
 #' A Outliers Replacer Function
 #'
-#' This function finds outliers in pollen time-series and replace them with backgroud values
+#' This function finds outliers in pollen time-series and replaces them with background values
 #' @param value pollen concentration values
 #' @param date dates 
-#' @param threshold anumber indicating how many times outling value needs to be larger than the backgroud to be replaces (default is 5)
+#' @param threshold a number indicating how many times outlying value needs to be larger than the background to be replaced (default is 5)
 #' @param sum_percent a sum_percent parameter
 #'
 #' @return a new data.frame object with replaced outliers
