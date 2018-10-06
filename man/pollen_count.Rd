@@ -13,5 +13,5 @@
     \item hazel
 }}
 \description{
-pollen_count A dataset containing the synthetic data of alder, birch, and hazel pollen count in four locations ('Oz', 'Shire', 'Atlantis', 'Hundred Acre Wood') between 2007 and 2016
+pollen_count A dataset containing a synthetic data of alder, birch, and hazel pollen count in four locations ('Oz', 'Shire', 'Atlantis', 'Hundred Acre Wood') between 2007 and 2016
 }

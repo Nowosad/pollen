@@ -13,7 +13,7 @@ pollen_season(value, date, method, threshold = NULL)
 
 \item{method}{the pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"}
 
-\item{threshold}{a threshold value used for "Driessen" method}
+\item{threshold}{a threshold value used for the "Driessen" method}
 }
 \value{
 a data.frame object with year, date of pollen season start and date of pollen season end
