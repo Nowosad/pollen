@@ -1,14 +1,22 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Pollen - tools for working with aerobiological data
-===================================================
 
-[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen) [![codecov](https://codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://codecov.io/gh/Nowosad/pollen) [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen) [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
+# Pollen - tools for working with aerobiological data
 
-`pollen` is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in a pollen count data.
+[![Build
+Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
+[![codecov](https://codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://codecov.io/gh/Nowosad/pollen)
+[![CRAN
+version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen)
+[![CRAN RStudio mirror
+downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
 
-Installation
-------------
+`pollen` is a set of functions for working with aerobiological data. It
+takes care of some of the most widely use aerobiological calculations,
+such as determination of pollen season limits or replacement of outliers
+in a pollen count data.
+
+## Installation
 
 Get the released version from CRAN:
 
@@ -22,8 +30,7 @@ Or the development version from github:
 devtools::install_github("nowosad/pollen")
 ```
 
-Examples
---------
+## Examples
 
 ``` r
 library(pollen)
@@ -59,9 +66,10 @@ pollen_season(value = df$birch, date = df$date, method = "95")
 #> 10 2016 2016-04-06 2016-05-09
 ```
 
-More examples could be found in [the first package vignette](https://cdn.rawgit.com/Nowosad/pollen/master/vignettes/intro.html).
+More examples could be found in [the first package
+vignette](https://cdn.rawgit.com/Nowosad/pollen/master/vignettes/intro.html).
 
-Contributions
--------------
+## Contributions
 
-[Feel free to submit issues and enhancement requests.](https://github.com/Nowosad/pollen/issues)
+[Feel free to submit issues and enhancement
+requests.](https://github.com/Nowosad/pollen/issues)
