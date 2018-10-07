@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="date" content="2018-10-03" />
+<meta name="date" content="2018-10-07" />
 
 <title>Introduction to the pollen package</title>
 
@@ -278,7 +278,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">Introduction to the pollen package</h1>
-<h4 class="date"><em>2018-10-03</em></h4>
+<h4 class="date"><em>2018-10-07</em></h4>
 
 
 
@@ -417,7 +417,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </div>
 <div id="replacement-of-outliers" class="section level3">
 <h3>Replacement of outliers</h3>
-<p>The <strong>pollen</strong> package also implements a method for replacement of outliers (Kasprzyk and Walanus (2014) <a href="doi:10.1007/s10453-014-9332-8" class="uri">doi:10.1007/s10453-014-9332-8</a>) with the <code>outliers_replacer()</code> function. <code>outliers_replacer()</code> accepts a column with concentration, a column with date, and a <code>threshold</code> - a number indicating how many times outlying value needs to be larger than the background to be replaced. This method can be applied on a single site:</p>
+<p>The <strong>pollen</strong> package also implements a method for replacement of outliers (Kasprzyk and Walanus (2014) &lt;<a href="https://doi.org/10.1007/s10453-014-9332-8">doi:10.1007/s10453-014-9332-8</a>&gt;) with the <code>outliers_replacer()</code> function. <code>outliers_replacer()</code> accepts a column with concentration, a column with date, and a <code>threshold</code> - a number indicating how many times outlying value needs to be larger than the background to be replaced. This method can be applied on a single site:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site <span class="op">==</span><span class="st"> &quot;Shire&quot;</span>)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">new_df &lt;-<span class="st"> </span><span class="kw">outliers_replacer</span>(<span class="dt">value =</span> df<span class="op">$</span>alder, <span class="dt">date =</span> df<span class="op">$</span>date)</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">identical</span>(df, new_df)</a>

@@ -102,7 +102,7 @@ head(df_seasons)
 
 ### Replacement of outliers
 
-The **pollen** package also implements a method for replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>) with the `outliers_replacer()` function.
+The **pollen** package also implements a method for replacement of outliers (Kasprzyk and Walanus (2014) <[doi:10.1007/s10453-014-9332-8](https://doi.org/10.1007/s10453-014-9332-8)>) with the `outliers_replacer()` function.
 `outliers_replacer()` accepts a column with concentration, a column with date, and a `threshold` - a number indicating how many times outlying value needs to be larger than the background to be replaced.
 This method can be applied on a single site:
 
