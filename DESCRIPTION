@@ -19,9 +19,9 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-URL: https://github.com/Nowosad/pollen 
+URL: https://github.com/Nowosad/pollen
 BugReports: https://github.com/Nowosad/pollen/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

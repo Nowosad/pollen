@@ -2,6 +2,7 @@
 
 export(gdd)
 export(outliers_replacer)
+export(pollen_index)
 export(pollen_season)
 importFrom(dplyr,arrange_)
 importFrom(dplyr,lag)
