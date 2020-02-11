@@ -27,7 +27,7 @@ install.packages("pollen")
 Or the development version from github:
 
 ``` r
-devtools::install_github("nowosad/pollen")
+remotes::install_github("nowosad/pollen")
 ```
 
 ## Examples
