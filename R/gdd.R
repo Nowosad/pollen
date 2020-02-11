@@ -7,6 +7,7 @@
 #' @param tmin daily minimum temperature
 #' @param tbase base temperature
 #' @param tbase_max maximum base temperature
+#' @param case either "A", "B", "C", or "D". The default is "C".
 #'
 #' @return a numeric vector with GDD values
 #'
@@ -16,25 +17,44 @@
 #'
 #' @examples
 #' set.seed(25)
-#' df <- data.frame(tmax=runif(100, 6, 10), tmin=runif(100, 4,6))
+#' df <- data.frame(tmax = runif(100, 6, 10), tmin = runif(100, 4, 6))
 #'
 #' gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 30)
 #'
 #'
-gdd <- function(tmax, tmin, tbase, tbase_max) {
-  adjust_for_tbase <- function(x, tbase) {
-    ifelse(test = x < tbase, yes = tbase, no = x)
+gdd <- function(tmax, tmin, tbase, tbase_max, case = "C") {
+  
+  if (!case %in% c("A", "B", "C", "D")){
+    stop('The case argument must be either "A", "B", "C", or "D"', call. = FALSE)
   }
-  adjust_for_tbase_max <- function(x, tbase_max) {
-    ifelse(test = x > tbase_max, yes = tbase_max, no = x)
+  
+  if (case == "A"){
+    tbase = 0
+  }
+  
+  if (case %in% c("B", "C")){
+    tmax <- adjust_for_tbase(tmax, tbase)
+    tmin <- adjust_for_tbase(tmin, tbase)
+  }
+  
+  if (case == "C"){
+    tmax <- adjust_for_tbase_max(tmax, tbase_max)
+    tmin <- adjust_for_tbase_max(tmin, tbase_max)
+  }
+  
+  if (case == "D"){
+    gdd_temp <- ifelse(tmax > tbase_max, yes = 0, no = (tmax + tmin) / 2 - tbase)
+  } else if (case %in% c("A", "B", "C")){
+    gdd_temp <- (tmax + tmin) / 2 - tbase
   }
 
-  tmax_adjusted <- adjust_for_tbase(tmax, tbase)
-  tmin_adjusted <- adjust_for_tbase(tmin, tbase)
+  return(cumsum(gdd_temp))
+}
 
-  tmax_adjusted <- adjust_for_tbase_max(tmax_adjusted, tbase_max)
-  tmin_adjusted <- adjust_for_tbase_max(tmin_adjusted, tbase_max)
+adjust_for_tbase <- function(x, tbase) {
+  ifelse(test = x < tbase, yes = tbase, no = x)
+}
 
-  gdd_temp <- (tmax_adjusted + tmin_adjusted) / 2 - tbase
-  cumsum(gdd_temp)
+adjust_for_tbase_max <- function(x, tbase_max) {
+  ifelse(test = x > tbase_max, yes = tbase_max, no = x)
 }

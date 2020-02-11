@@ -4,7 +4,7 @@
 \alias{gdd}
 \title{Growing Degree Days Function}
 \usage{
-gdd(tmax, tmin, tbase, tbase_max)
+gdd(tmax, tmin, tbase, tbase_max, case = "C")
 }
 \arguments{
 \item{tmax}{daily maximum temperature}
@@ -14,6 +14,8 @@ gdd(tmax, tmin, tbase, tbase_max)
 \item{tbase}{base temperature}
 
 \item{tbase_max}{maximum base temperature}
+
+\item{case}{either "A", "B", "C", or "D". The default is "C".}
 }
 \value{
 a numeric vector with GDD values
@@ -24,7 +26,7 @@ and minimum temperatures, a base temperature and a maximum base temperature
 }
 \examples{
 set.seed(25)
-df <- data.frame(tmax=runif(100, 6, 10), tmin=runif(100, 4,6))
+df <- data.frame(tmax = runif(100, 6, 10), tmin = runif(100, 4, 6))
 
 gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 30)
 
