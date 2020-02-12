@@ -9,17 +9,19 @@ Authors@R: person("Jakub", "Nowosad",
 Description: Supports analysis of aerobiological data. 
     Available features include determination of pollen season limits, 
     replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>),
-    and calculation of growing degree days.
+    and calculation of growing degree days (Baskerville and Emin (1969) <doi:10.2307/1933912>).
 Imports:
     lubridate,
     purrr,
     dplyr
 Suggests:
     covr,
-    testthat,
+    ggplot2,
     knitr,
-    rmarkdown
-URL: https://github.com/Nowosad/pollen
+    tidyr,
+    rmarkdown,
+    testthat
+URL: https://nowosad.github.io/pollen/
 BugReports: https://github.com/Nowosad/pollen/issues
 License: MIT + file LICENSE
 LazyData: TRUE
