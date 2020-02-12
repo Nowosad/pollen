@@ -14,35 +14,33 @@ knitr::opts_chunk$set(
 )
 ```
 
-intro - what's gdd and why this is important
-problem - there are many ways to calculate gdd
-solution - here i will describe what is possible with the pollen package
+<!-- intro - what's gdd and why this is important -->
+<!-- problem - there are many ways to calculate gdd -->
+<!-- solution - here i will describe what is possible with the pollen package -->
 
 Let's start with attaching a set of package used in this vignette:
 
 ```{r setup, message=FALSE}
 library(pollen)
-library(dplyr)
 library(ggplot2)
 library(tidyr)
 ```
 
-Next, we will create an artificial data frame with three columns:
+Next, we will use the `gdd_data` dataset - a data frame with three columns:
 
-- `day` - a number between 1 and 30 - this would be a date in a real data
-- `tmax` - a random value between 6 and 30 - this value would represent maximum temperature in a real data
-- `tmin` - a random value between 4 and 6 - this value would represent minimum temperature in a real data
+- `day` - this could be a date in real data
+- `tmax` - this value would represent a maximum temperature in real data
+- `tmin` - this value would represent a minimum temperature in real data
 
 ```{r}
-set.seed(25)
-df <- data.frame(day = 1:30, tmax = runif(30, 6, 30), tmin = runif(30, 4, 6))
-df
+data("gdd_data", package = "pollen")
+head(gdd_data)
 ```
 
-We can vizualize our created data using the **ggplot2** package:
+We can vizualize the `gdd_data` dataset using the **ggplot2** package:
 
 ```{r}
-df_plot1 <- pivot_longer(df, tmax:tmin)
+df_plot1 <- pivot_longer(gdd_data, tmax:tmin)
 p1 <- ggplot(df_plot1) +
   geom_line(aes(day, value, color = name))
 p1
@@ -51,35 +49,46 @@ p1
 The **pollen** package allows for calculations of growing degree days (GDD) using the `gdd()` function. 
 This function accepts up to five arguments:
 
-- `tmax` - 
-- `tmin` - 
-- `tbase` - 
-- `tbase_max` - 
-- `case` - 
+- `tmax` - daily maximum temperature
+- `tmin` - daily minimum temperature
+- `tbase` - base temperature
+- `tbase_max` - maximum base temperature
+- `case` - type of the GDD calculations. 
+Either "A", "B", "C", or "D". 
+The default is "C".
 
-The last argument is inspired by the article by Baskerville and Emin (1969).
+The last argument is inspired by the article by Baskerville and Emin (1969) (see Figure 1 in the mentioned paper).
 
+- Case `"A"` - this is the simplest case. 
+The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`)
+- Case `"B"` - in this case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`
+- Case `"C"` - same as case `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`
+- Case `"D"`- same as case `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added
 
 ```{r}
-df$case_a <- gdd(tmax = df$tmax, tmin = df$tmin, case = "A")
-df$case_b <- gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, case = "B")
-df$case_c <- gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 20, case = "C")
-df$case_d <- gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 20, case = "D")
-df
+gdd_data$case_a <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin,
+                       tbase = 5, case = "A")
+gdd_data$case_b <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
+                       tbase = 5, case = "B")
+gdd_data$case_c <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
+                       tbase = 5, tbase_max = 20, case = "C")
+gdd_data$case_d <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
+                       tbase = 5, tbase_max = 20, case = "D")
+head(gdd_data)
 ```
 
-Finally, let's compare these four cases vizually:
+Finally, let's compare these four cases:
 
 ```{r}
-df_plot2 <- pivot_longer(df, case_a:case_d)
+df_plot2 <- pivot_longer(gdd_data, case_a:case_d)
 p2 <- ggplot(df_plot2) +
   geom_line(aes(day, value, color = name))
 p2
 ```
 
-there are large difference in these exagurated examples
+<!-- there are large difference in these exaggerated examples -->
 
-advices - use them carefully, trying to connect this calculation to your knowlage.
+<!-- advice - use them carefully, trying to connect this calculation to your knowledge. -->
 
 # References
 
