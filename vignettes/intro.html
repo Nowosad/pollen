@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<meta name="date" content="2018-10-07" />
+<meta name="date" content="2020-02-12" />
 
 <title>Introduction to the pollen package</title>
 
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
+<style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -34,13 +34,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,7 +80,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -96,9 +116,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -267,8 +284,12 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
+
+
+
 
 </head>
 
@@ -278,11 +299,11 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">Introduction to the pollen package</h1>
-<h4 class="date"><em>2018-10-07</em></h4>
+<h4 class="date">2020-02-12</h4>
 
 
 
-<p><code>pollen</code> is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in a pollen count data.</p>
+<p><strong>pollen</strong> is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in a pollen count data.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(pollen)</a></code></pre></div>
 <div id="examples" class="section level2">
 <h2>Examples</h2>
@@ -322,8 +343,8 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>… and Atlantis:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">df2 &lt;-<span class="st"> </span><span class="kw">subset</span>(pollen_count, site <span class="op">==</span><span class="st"> &quot;Atlantis&quot;</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">pollen_season</span>(<span class="dt">value =</span> df2<span class="op">$</span>alder, <span class="dt">date =</span> df2<span class="op">$</span>date, <span class="dt">method =</span> <span class="st">&quot;95&quot;</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Warning in pollen_season(value = df2$alder, date = df2$date, method =</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; &quot;95&quot;): NA values were found in the input data.</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Warning in pollen_season(value = df2$alder, date = df2$date, method = &quot;95&quot;): NA</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; values were found in the input data.</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;    year      start        end</span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1  2007       &lt;NA&gt;       &lt;NA&gt;</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2  2008 2008-03-23 2008-04-14</span></a>
@@ -430,6 +451,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </div>
 </div>
 
+
+
+<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
