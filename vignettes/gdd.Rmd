@@ -1,0 +1,86 @@
+---
+title: "Calculation of growing degree days (GDD) in the pollen package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Calculation of growing degree days (GDD) in the pollen package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+intro - what's gdd and why this is important
+problem - there are many ways to calculate gdd
+solution - here i will describe what is possible with the pollen package
+
+Let's start with attaching a set of package used in this vignette:
+
+```{r setup, message=FALSE}
+library(pollen)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+```
+
+Next, we will create an artificial data frame with three columns:
+
+- `day` - a number between 1 and 30 - this would be a date in a real data
+- `tmax` - a random value between 6 and 30 - this value would represent maximum temperature in a real data
+- `tmin` - a random value between 4 and 6 - this value would represent minimum temperature in a real data
+
+```{r}
+set.seed(25)
+df <- data.frame(day = 1:30, tmax = runif(30, 6, 30), tmin = runif(30, 4, 6))
+df
+```
+
+We can vizualize our created data using the **ggplot2** package:
+
+```{r}
+df_plot1 <- pivot_longer(df, tmax:tmin)
+p1 <- ggplot(df_plot1) +
+  geom_line(aes(day, value, color = name))
+p1
+```
+
+The **pollen** package allows for calculations of growing degree days (GDD) using the `gdd()` function. 
+This function accepts up to five arguments:
+
+- `tmax` - 
+- `tmin` - 
+- `tbase` - 
+- `tbase_max` - 
+- `case` - 
+
+The last argument is inspired by the article by Baskerville and Emin (1969).
+
+
+```{r}
+df$case_a <- gdd(tmax = df$tmax, tmin = df$tmin, case = "A")
+df$case_b <- gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, case = "B")
+df$case_c <- gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 20, case = "C")
+df$case_d <- gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 20, case = "D")
+df
+```
+
+Finally, let's compare these four cases vizually:
+
+```{r}
+df_plot2 <- pivot_longer(df, case_a:case_d)
+p2 <- ggplot(df_plot2) +
+  geom_line(aes(day, value, color = name))
+p2
+```
+
+there are large difference in these exagurated examples
+
+advices - use them carefully, trying to connect this calculation to your knowlage.
+
+# References
+
+Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912
