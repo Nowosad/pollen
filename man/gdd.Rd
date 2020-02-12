@@ -15,7 +15,7 @@ gdd(tmax, tmin, tbase, tbase_max, case = "C")
 
 \item{tbase_max}{maximum base temperature}
 
-\item{case}{either "A", "B", "C", or "D". The default is "C".}
+\item{case}{either "B", "C", or "D". The default is "C".}
 }
 \value{
 a numeric vector with GDD values
@@ -31,6 +31,9 @@ df <- data.frame(tmax = runif(100, 6, 10), tmin = runif(100, 4, 6))
 gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 30)
 
 
+}
+\references{
+Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912
 }
 \keyword{meteo,}
 \keyword{temperature}
