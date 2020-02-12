@@ -127,35 +127,32 @@
 <li>
 <code>tbase_max</code> - maximum base temperature</li>
 <li>
-<code>case</code> - type of the GDD calculations. Either “A”, “B”, “C”, or “D”. The default is “C”.</li>
+<code>case</code> - type of the GDD calculations. Either “B”, “C”, or “D”. The default is “C”.</li>
 </ul>
 <p>The last argument is inspired by the article by Baskerville and Emin (1969) (see Figure 1 in the mentioned paper).</p>
 <ul>
-<li>Case <code>"A"</code> - this is the simplest case. The heat units are calculated based on the difference between the mean daily temperature and the threshold (<code>tbase</code>)</li>
-<li>Case <code>"B"</code> - in this case when the value of <code>tmin</code> is lower than <code>tbase</code>, then it is replaced by <code>tbase</code>
+<li>Case <code>"B"</code> - The heat units are calculated based on the difference between the mean daily temperature and the threshold (<code>tbase</code>). In the case when the value of <code>tmin</code> is lower than <code>tbase</code>, then it is replaced by <code>tbase</code>
 </li>
 <li>Case <code>"C"</code> - same as case <code>"B"</code> and when the value of <code>tmax</code> is larger than <code>tbase_max</code>, then it is replaced by <code>tbase_max</code>
 </li>
 <li>Case <code>"D"</code>- same as case <code>"B"</code> and when the value of <code>tmax</code> is larger than <code>tbase_max</code>, then no heat units are added</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">gdd_data<span class="op">$</span>case_a &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gdd.html">gdd</a></span>(<span class="dt">tmax =</span> gdd_data<span class="op">$</span>tmax, <span class="dt">tmin =</span> gdd_data<span class="op">$</span>tmin,</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">                       <span class="dt">tbase =</span> <span class="dv">5</span>, <span class="dt">case =</span> <span class="st">"A"</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">gdd_data<span class="op">$</span>case_b &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gdd.html">gdd</a></span>(<span class="dt">tmax =</span> gdd_data<span class="op">$</span>tmax, <span class="dt">tmin =</span> gdd_data<span class="op">$</span>tmin, </a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">                       <span class="dt">tbase =</span> <span class="dv">5</span>, <span class="dt">case =</span> <span class="st">"B"</span>)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">gdd_data<span class="op">$</span>case_c &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gdd.html">gdd</a></span>(<span class="dt">tmax =</span> gdd_data<span class="op">$</span>tmax, <span class="dt">tmin =</span> gdd_data<span class="op">$</span>tmin, </a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">                       <span class="dt">tbase =</span> <span class="dv">5</span>, <span class="dt">tbase_max =</span> <span class="dv">20</span>, <span class="dt">case =</span> <span class="st">"C"</span>)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">gdd_data<span class="op">$</span>case_d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gdd.html">gdd</a></span>(<span class="dt">tmax =</span> gdd_data<span class="op">$</span>tmax, <span class="dt">tmin =</span> gdd_data<span class="op">$</span>tmin, </a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">                       <span class="dt">tbase =</span> <span class="dv">5</span>, <span class="dt">tbase_max =</span> <span class="dv">20</span>, <span class="dt">case =</span> <span class="st">"D"</span>)</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(gdd_data)</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;   day tmax tmin case_a case_b case_c case_d</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 1   1    2    2     -3      0      0      0</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 2   2    2    2     -6      0      0      0</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 3   3    2    2     -9      0      0      0</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 4   4    2    2    -12      0      0      0</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 5   5    2    2    -15      0      0      0</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 6   6    2    2    -18      0      0      0</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">gdd_data<span class="op">$</span>case_b &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gdd.html">gdd</a></span>(<span class="dt">tmax =</span> gdd_data<span class="op">$</span>tmax, <span class="dt">tmin =</span> gdd_data<span class="op">$</span>tmin, </a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">                       <span class="dt">tbase =</span> <span class="dv">5</span>, <span class="dt">case =</span> <span class="st">"B"</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">gdd_data<span class="op">$</span>case_c &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gdd.html">gdd</a></span>(<span class="dt">tmax =</span> gdd_data<span class="op">$</span>tmax, <span class="dt">tmin =</span> gdd_data<span class="op">$</span>tmin, </a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">                       <span class="dt">tbase =</span> <span class="dv">5</span>, <span class="dt">tbase_max =</span> <span class="dv">20</span>, <span class="dt">case =</span> <span class="st">"C"</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">gdd_data<span class="op">$</span>case_d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gdd.html">gdd</a></span>(<span class="dt">tmax =</span> gdd_data<span class="op">$</span>tmax, <span class="dt">tmin =</span> gdd_data<span class="op">$</span>tmin, </a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">                       <span class="dt">tbase =</span> <span class="dv">5</span>, <span class="dt">tbase_max =</span> <span class="dv">20</span>, <span class="dt">case =</span> <span class="st">"D"</span>)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(gdd_data)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;   day tmax tmin case_b case_c case_d</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 1   1    2    2      0      0      0</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 2   2    2    2      0      0      0</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 3   3    2    2      0      0      0</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 4   4    2    2      0      0      0</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 5   5    2    2      0      0      0</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 6   6    2    2      0      0      0</span></a></code></pre></div>
 <p>Finally, let’s compare these four cases:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">df_plot2 &lt;-<span class="st"> </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span>(gdd_data, case_a<span class="op">:</span>case_d)</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">df_plot2 &lt;-<span class="st"> </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span>(gdd_data, case_b<span class="op">:</span>case_d)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">p2 &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(df_plot2) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(day, value, <span class="dt">color =</span> name))</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">p2</a></code></pre></div>
