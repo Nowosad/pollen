@@ -11,10 +11,12 @@ version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
 
-`pollen` is a set of functions for working with aerobiological data. It
-takes care of some of the most widely use aerobiological calculations,
-such as determination of pollen season limits or replacement of outliers
-in a pollen count data.
+The **pollen** package is a set of functions for working with
+aerobiological data. It takes care of some of the most widely use
+aerobiological calculations, including determination of pollen season
+limits, replacement of outliers (Kasprzyk and Walanus (2014)
+<doi:10.1007/s10453-014-9332-8>), and calculation of growing degree days
+(Baskerville and Emin (1969) <doi:10.2307/1933912>).
 
 ## Installation
 
@@ -66,10 +68,25 @@ pollen_season(value = df$birch, date = df$date, method = "95")
 #> 10 2016 2016-04-06 2016-05-09
 ```
 
-More examples could be found in [the first package
-vignette](https://cdn.rawgit.com/Nowosad/pollen/master/vignettes/intro.html).
+More examples of pollen seasons’ calculations can be found in [the first
+package vignette](https://nowosad.github.io/pollen/articles/intro.html).
+
+### Growing degree days (GDD) calculation
+
+Examples of Growing degree days (GDD) calculations can be found in [the
+second package
+vignette](https://nowosad.github.io/pollen/articles/gdd.html).
 
 ## Contributions
 
 [Feel free to submit issues and enhancement
 requests.](https://github.com/Nowosad/pollen/issues)
+
+## References
+
+  - Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat
+    Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3),
+    514-517. <doi:10.2307/1933912>
+  - Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic
+    Distribution Models for Airborne Pollen Grains and Fungal Spore
+    Season Dynamics, Aerobiologia 30(4), 369-83.
