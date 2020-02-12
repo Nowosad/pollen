@@ -28,16 +28,16 @@ gdd <- function(tmax, tmin, tbase, tbase_max, case = "C") {
     stop('The case argument must be either "A", "B", "C", or "D"', call. = FALSE)
   }
   
-  if (case == "A"){
-    tbase = 0
-  }
+  # if (case == "A"){
+  #   tbase = 0
+  # }
   
-  if (case %in% c("B", "C")){
+  if (case %in% c("B", "C", "D")){
     tmax <- adjust_for_tbase(tmax, tbase)
     tmin <- adjust_for_tbase(tmin, tbase)
   }
   
-  if (case == "C"){
+  if (case %in% c("C")){
     tmax <- adjust_for_tbase_max(tmax, tbase_max)
     tmin <- adjust_for_tbase_max(tmin, tbase_max)
   }
