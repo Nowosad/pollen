@@ -12,7 +12,7 @@ vignette: >
 knitr::opts_chunk$set(collapse = T, comment = "#>")
 ```
 
-`pollen` is a set of functions for working with aerobiological data. 
+**pollen** is a set of functions for working with aerobiological data. 
 It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in a pollen count data.
 
 ```{r, lib, eval=TRUE}
