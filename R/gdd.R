@@ -7,11 +7,13 @@
 #' @param tmin daily minimum temperature
 #' @param tbase base temperature
 #' @param tbase_max maximum base temperature
-#' @param case either "A", "B", "C", or "D". The default is "C".
+#' @param case either "B", "C", or "D". The default is "C".
 #'
 #' @return a numeric vector with GDD values
 #'
 #' @keywords meteo, temperature
+#' 
+#' @references Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912
 #'
 #' @export
 #'
@@ -32,7 +34,7 @@ gdd <- function(tmax, tmin, tbase, tbase_max, case = "C") {
   #   tbase = 0
   # }
   
-  if (case %in% c("B", "C", "D")){
+  if (case %in% c("A", "B", "C", "D")){
     tmax <- adjust_for_tbase(tmax, tbase)
     tmin <- adjust_for_tbase(tmin, tbase)
   }

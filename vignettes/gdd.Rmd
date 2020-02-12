@@ -54,20 +54,17 @@ This function accepts up to five arguments:
 - `tbase` - base temperature
 - `tbase_max` - maximum base temperature
 - `case` - type of the GDD calculations. 
-Either "A", "B", "C", or "D". 
+Either "B", "C", or "D". 
 The default is "C".
 
 The last argument is inspired by the article by Baskerville and Emin (1969) (see Figure 1 in the mentioned paper).
 
-- Case `"A"` - this is the simplest case. 
-The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`)
-- Case `"B"` - in this case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`
+- Case `"B"` - The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`). 
+In the case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`
 - Case `"C"` - same as case `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`
 - Case `"D"`- same as case `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added
 
 ```{r}
-gdd_data$case_a <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin,
-                       tbase = 5, case = "A")
 gdd_data$case_b <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
                        tbase = 5, case = "B")
 gdd_data$case_c <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
@@ -80,7 +77,7 @@ head(gdd_data)
 Finally, let's compare these four cases:
 
 ```{r}
-df_plot2 <- pivot_longer(gdd_data, case_a:case_d)
+df_plot2 <- pivot_longer(gdd_data, case_b:case_d)
 p2 <- ggplot(df_plot2) +
   geom_line(aes(day, value, color = name))
 p2
