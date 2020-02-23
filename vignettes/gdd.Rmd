@@ -14,9 +14,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-<!-- intro - what's gdd and why this is important -->
-<!-- problem - there are many ways to calculate gdd -->
-<!-- solution - here i will describe what is possible with the pollen package -->
+Growing degree days (GDD) are a measure of heat accumulation used to predict plant and animal development rates.
+It can be, however, calculated using several approaches.
+The **pollen** package allows for three different versions of the GDD calculations.
+The goal of this vignette is to describe and show examples of calculating GDD using different methods.
 
 Let's start with attaching a set of package used in this vignette:
 
@@ -53,39 +54,38 @@ This function accepts up to five arguments:
 - `tmin` - daily minimum temperature
 - `tbase` - base temperature
 - `tbase_max` - maximum base temperature
-- `case` - type of the GDD calculations. 
+- `type` - type of the GDD calculations. 
 Either "B", "C", or "D". 
 The default is "C".
 
 The last argument is inspired by the article by Baskerville and Emin (1969) (see Figure 1 in the mentioned paper).
 
-- Case `"B"` - The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`). 
+- Type `"B"` - The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`). 
 In the case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`
-- Case `"C"` - same as case `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`
-- Case `"D"`- same as case `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added
+- Type `"C"` - same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`
+- Type `"D"`- same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added
 
 ```{r}
-gdd_data$case_b <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
-                       tbase = 5, case = "B")
-gdd_data$case_c <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
-                       tbase = 5, tbase_max = 20, case = "C")
-gdd_data$case_d <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
-                       tbase = 5, tbase_max = 20, case = "D")
+gdd_data$type_b <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
+                       tbase = 5, type = "B")
+gdd_data$type_c <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
+                       tbase = 5, tbase_max = 20, type = "C")
+gdd_data$type_d <- gdd(tmax = gdd_data$tmax, tmin = gdd_data$tmin, 
+                       tbase = 5, tbase_max = 20, type = "D")
 head(gdd_data)
 ```
 
-Finally, let's compare these four cases:
+Finally, let's compare these three types:
 
 ```{r}
-df_plot2 <- pivot_longer(gdd_data, case_b:case_d)
+df_plot2 <- pivot_longer(gdd_data, type_b:type_d)
 p2 <- ggplot(df_plot2) +
   geom_line(aes(day, value, color = name))
 p2
 ```
 
-<!-- there are large difference in these exaggerated examples -->
-
-<!-- advice - use them carefully, trying to connect this calculation to your knowledge. -->
+The above figure clearly shows that the selection of the calculation method (`type`) can make a large difference in the output values.
+Therefore, it is crucial to select the `type` and other parameters (`tbase` and `tbase_max`) that are appropriate for the studied phase in the plant or animal development. 
 
 # References
 
