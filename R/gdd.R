@@ -7,7 +7,7 @@
 #' @param tmin daily minimum temperature
 #' @param tbase base temperature
 #' @param tbase_max maximum base temperature
-#' @param case either "B", "C", or "D". The default is "C".
+#' @param type either "B", "C", or "D". The default is "C". Type "B" - The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`). In the case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`. Type `"C"` - same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`. Type `"D"`- same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added.
 #'
 #' @return a numeric vector with GDD values
 #'
@@ -24,29 +24,29 @@
 #' gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 30)
 #'
 #'
-gdd <- function(tmax, tmin, tbase, tbase_max, case = "C") {
+gdd <- function(tmax, tmin, tbase, tbase_max, type = "C") {
   
-  if (!case %in% c("A", "B", "C", "D")){
+  if (!type %in% c("A", "B", "C", "D")){
     stop('The case argument must be either "A", "B", "C", or "D"', call. = FALSE)
   }
   
-  # if (case == "A"){
+  # if (type == "A"){
   #   tbase = 0
   # }
   
-  if (case %in% c("A", "B", "C", "D")){
+  if (type %in% c("A", "B", "C", "D")){
     tmax <- adjust_for_tbase(tmax, tbase)
     tmin <- adjust_for_tbase(tmin, tbase)
   }
   
-  if (case %in% c("C")){
+  if (type %in% c("C")){
     tmax <- adjust_for_tbase_max(tmax, tbase_max)
     tmin <- adjust_for_tbase_max(tmin, tbase_max)
   }
   
-  if (case == "D"){
+  if (type == "D"){
     gdd_temp <- ifelse(tmax > tbase_max, yes = 0, no = (tmax + tmin) / 2 - tbase)
-  } else if (case %in% c("A", "B", "C")){
+  } else if (type %in% c("A", "B", "C")){
     gdd_temp <- (tmax + tmin) / 2 - tbase
   }
 

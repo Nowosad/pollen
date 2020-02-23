@@ -4,7 +4,7 @@
 \alias{gdd}
 \title{Growing Degree Days Function}
 \usage{
-gdd(tmax, tmin, tbase, tbase_max, case = "C")
+gdd(tmax, tmin, tbase, tbase_max, type = "C")
 }
 \arguments{
 \item{tmax}{daily maximum temperature}
@@ -15,7 +15,7 @@ gdd(tmax, tmin, tbase, tbase_max, case = "C")
 
 \item{tbase_max}{maximum base temperature}
 
-\item{case}{either "B", "C", or "D". The default is "C".}
+\item{type}{either "B", "C", or "D". The default is "C". Type "B" - The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`). In the case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`. Type `"C"` - same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`. Type `"D"`- same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added.}
 }
 \value{
 a numeric vector with GDD values
