@@ -52,6 +52,3 @@ Lejoly-Gabriel and Leuschner: 1983, Comparison of air-borne pollen at Louvain-la
 
 Driessen M. N. B. M., Van Herpen R. M. A. and Smithuis, L. O. M. J.: 1990, Prediction of the start of the grass pollen season for the southern part of the Netherlands, Grana, 29(1), 79-86.
 }
-\keyword{pollen}
-\keyword{pollen,}
-\keyword{season}

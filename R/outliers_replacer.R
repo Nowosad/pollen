@@ -13,8 +13,6 @@
 #'
 #' @references  Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic Distribution Models for Airborne Pollen Grains and Fungal Spore Season Dynamics, Aerobiologia 30(4), 369-83.
 #'
-#' @keywords pollen, pollen outliers
-#'
 #' @export
 #'
 #' @examples

@@ -89,4 +89,4 @@ Therefore, it is crucial to select the `type` and other parameters (`tbase` and 
 
 # References
 
-Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912
+Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517.  https://doi.org/10.2307/1933912
