@@ -14,9 +14,8 @@ downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/
 The **pollen** package is a set of functions for working with
 aerobiological data. It takes care of some of the most widely use
 aerobiological calculations, including determination of pollen season
-limits, replacement of outliers (Kasprzyk and Walanus (2014)
-<doi:10.1007/s10453-014-9332-8>), and calculation of growing degree days
-(Baskerville and Emin (1969) <doi:10.2307/1933912>).
+limits, replacement of outliers (Kasprzyk and Walanus (2014)), and
+calculation of growing degree days (Baskerville and Emin (1969)).
 
 ## Installation
 
@@ -84,9 +83,9 @@ requests.](https://github.com/Nowosad/pollen/issues)
 
 ## References
 
-  - Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat
+  - Baskerville, G., & Emin, P.: 1969. Rapid Estimation of Heat
     Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3),
-    514-517. <doi:10.2307/1933912>
+    514-517. <https://doi.org/10.2307/1933912>
   - Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic
     Distribution Models for Airborne Pollen Grains and Fungal Spore
     Season Dynamics, Aerobiologia 30(4), 369-83.
