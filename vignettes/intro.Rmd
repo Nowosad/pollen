@@ -1,5 +1,6 @@
 ---
 title: "Introduction to the pollen package"
+author: Jakub Nowosad
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

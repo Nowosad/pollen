@@ -1,5 +1,7 @@
 ---
 title: "Calculation of growing degree days (GDD) in the pollen package"
+author: Jakub Nowosad
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Calculation of growing degree days (GDD) in the pollen package}
