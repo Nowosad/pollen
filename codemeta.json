@@ -1,0 +1,183 @@
+{
+  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@type": "SoftwareSourceCode",
+  "identifier": "pollen",
+  "description": "Supports analysis of aerobiological data. \n    Available features include determination of pollen season limits, \n    replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>),\n    and calculation of growing degree days (Baskerville and Emin (1969) <doi:10.2307/1933912>).",
+  "name": "pollen: Analysis of Aerobiological Data",
+  "codeRepository": "https://nowosad.github.io/pollen/",
+  "issueTracker": "https://github.com/Nowosad/pollen/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "0.72.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "3.6.3",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.6.3 (2020-02-29)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Jakub",
+      "familyName": "Nowosad",
+      "email": "nowosad.jakub@gmail.com",
+      "@id": "https://orcid.org/0000-0002-1057-3721"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Jakub",
+      "familyName": "Nowosad",
+      "email": "nowosad.jakub@gmail.com",
+      "@id": "https://orcid.org/0000-0002-1057-3721"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyr",
+      "name": "tidyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tidyr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 2.10"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lubridate",
+      "name": "lubridate",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lubridate"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "purrr",
+      "name": "purrr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=purrr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "dplyr",
+      "name": "dplyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=dplyr"
+    }
+  ],
+  "readme": "https://github.com/Nowosad/pollen/blob/master/README.md",
+  "fileSize": "112.368KB",
+  "contIntegration": ["https://travis-ci.org/Nowosad/pollen", "https://codecov.io/gh/Nowosad/pollen"],
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2019",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Jakub",
+          "familyName": "Nowosad"
+        }
+      ],
+      "name": "pollen: Analysis of Aerobiological Data",
+      "url": "https://CRAN.R-project.org/package=pollen",
+      "description": "R package version 0.71"
+    }
+  ],
+  "relatedLink": "https://CRAN.R-project.org/package=pollen"
+}
