@@ -5,7 +5,7 @@
 
 [![Build
 Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
-[![codecov](https://codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://codecov.io/gh/Nowosad/pollen)
+[![codecov](https://app.codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Nowosad/pollen)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen)
 [![CRAN RStudio mirror
