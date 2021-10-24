@@ -4,12 +4,14 @@
 \name{gdd_data}
 \alias{gdd_data}
 \title{Exemplary dataset for GDD calculations}
-\format{A data frame with 100 rows and 3 variables:
+\format{
+A data frame with 100 rows and 3 variables:
 \itemize{
     \item day
     \item tmax
     \item tmin
-}}
+}
+}
 \description{
 gdd_data A dataset containing a synthetic data of day, tmax (daily maximum temperature), and tmin (daily minimum temperature)
 }

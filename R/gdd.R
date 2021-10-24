@@ -25,7 +25,7 @@
 gdd <- function(tmax, tmin, tbase, tbase_max, type = "C") {
   
   if (!type %in% c("A", "B", "C", "D")){
-    stop('The case argument must be either "A", "B", "C", or "D"', call. = FALSE)
+    stop('The type argument must be either "A", "B", "C", or "D"', call. = FALSE)
   }
   
   # if (type == "A"){
