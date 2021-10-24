@@ -3,8 +3,7 @@
 
 # Pollen - tools for working with aerobiological data
 
-[![Build
-Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
+[![R-CMD-check](https://github.com/Nowosad/pollen/workflows/pkgdown/badge.svg)](https://github.com/Nowosad/pollen/actions)
 [![codecov](https://app.codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Nowosad/pollen)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen)
@@ -54,6 +53,9 @@ head(pollen_count)
 ``` r
 df <- subset(pollen_count, site == "Oz")
 pollen_season(value = df$birch, date = df$date, method = "95")
+#> Warning: `arrange_()` was deprecated in dplyr 0.7.0.
+#> Please use `arrange()` instead.
+#> See vignette('programming') for more help
 #>    year      start        end
 #> 1  2007 2007-03-31 2007-05-03
 #> 2  2008 2008-04-19 2008-05-07
@@ -83,9 +85,9 @@ requests.](https://github.com/Nowosad/pollen/issues)
 
 ## References
 
-  - Baskerville, G., & Emin, P.: 1969. Rapid Estimation of Heat
+-   Baskerville, G., & Emin, P.: 1969. Rapid Estimation of Heat
     Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3),
     514-517. <https://doi.org/10.2307/1933912>
-  - Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic
+-   Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic
     Distribution Models for Airborne Pollen Grains and Fungal Spore
     Season Dynamics, Aerobiologia 30(4), 369-83.
