@@ -5,6 +5,9 @@
 #' @param type 
 #'
 #' @return
+#'
+#' @references Yang, S., Logan, J., & Coffey, D. L. (1995). Mathematical formulae for calculating the base temperature for growing degree days. In Agricultural and Forest Meteorology (Vol. 74, Issues 1-2, pp. 61-74). Elsevier BV
+#' 
 #' @export
 #'
 #' @examples
