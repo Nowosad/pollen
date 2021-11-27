@@ -22,7 +22,7 @@
 #' 
 #' @export
 #' 
-#' @seealso [pollen::gdd()]
+#' @seealso [gdd()] for calculation of growing degree days (GDD)
 #'
 #' @examples
 #' library(pollen)

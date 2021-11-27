@@ -47,5 +47,5 @@ Nuttonson, M. Y. (1955). Wheat-climate relationships and the use of phenology in
 Hoover, M. W. (1955). Some effects of temperature on the growth of southern peas. In Proc. Am. Soc. Hortic. Sci (Vol. 66, pp. 308-312).
 }
 \seealso{
-[pollen::gdd()]
+[gdd()] for calculation of growing degree days (GDD)
 }

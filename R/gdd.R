@@ -15,7 +15,7 @@
 #'
 #' @export
 #' 
-#' @seealso [pollen::base_temp()]
+#' @seealso [base_temp()] for determining a base temperature
 #'
 #' @examples
 #' set.seed(25)
