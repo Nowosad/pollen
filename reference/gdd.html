@@ -73,7 +73,7 @@ and minimum temperatures, a base temperature and a maximum base temperature" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pollen</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.80.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.81.0</span>
       </span>
     </div>
 
@@ -167,31 +167,35 @@ and minimum temperatures, a base temperature and a maximum base temperature</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Baskerville, G., &amp; Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>[base_temp()] for determining a base temperature</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>25</span><span class='op'>)</span>
-<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>tmax <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>6</span>, <span class='fl'>10</span><span class='op'>)</span>, tmin <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>4</span>, <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>gdd</span><span class='op'>(</span>tmax <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>tmax</span>, tmin <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>tmin</span>, tbase <span class='op'>=</span> <span class='fl'>5</span>, tbase_max <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   [1]   1.392985   3.282512   4.259733   6.554503   7.303287   9.810031
-#&gt;   [7]  11.562224  12.765263  13.878573  15.000558  16.156492  17.383517
-#&gt;  [13]  19.800607  21.478356  23.369211  24.164222  26.150454  28.305062
-#&gt;  [19]  29.758898  31.717690  32.299061  33.700871  34.404637  35.213010
-#&gt;  [25]  36.296748  37.764013  38.409299  40.410950  42.352622  43.437435
-#&gt;  [31]  45.583809  46.898344  47.871860  48.918490  51.504291  52.812050
-#&gt;  [37]  55.232033  56.759521  57.572129  58.319572  60.705153  62.204334
-#&gt;  [43]  63.838365  65.826710  67.450093  68.534809  71.016913  73.127310
-#&gt;  [49]  74.131668  76.074927  76.844723  78.817516  80.960568  82.446401
-#&gt;  [55]  84.000869  84.975839  85.778519  87.371530  88.238972  89.469210
-#&gt;  [61]  90.638672  91.785048  92.894984  94.750790  96.491373  98.958947
-#&gt;  [67] 100.404830 102.695104 104.531536 105.704549 108.122525 108.897840
-#&gt;  [73] 109.647810 112.055520 113.011545 114.644393 115.422643 118.031517
-#&gt;  [79] 118.893385 119.761111 121.831796 123.021970 125.019018 125.635943
-#&gt;  [85] 127.751313 129.805915 130.925935 132.390394 134.460273 136.077224
-#&gt;  [91] 137.989401 138.928684 140.986772 142.896909 143.415940 144.949065
-#&gt;  [97] 146.758733 149.065694 150.026993 151.204477</div><div class='input'>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>25</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>tmax <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>6</span>, <span class='fl'>10</span><span class='op'>)</span>, tmin <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>4</span>, <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>gdd</span><span class='op'>(</span>tmax <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>tmax</span>, tmin <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>tmin</span>, tbase <span class='op'>=</span> <span class='fl'>5</span>, tbase_max <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [1]   1.392985   3.282512   4.259733   6.554503   7.303287   9.810031</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [7]  11.562224  12.765263  13.878573  15.000558  16.156492  17.383517</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [13]  19.800607  21.478356  23.369211  24.164222  26.150454  28.305062</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [19]  29.758898  31.717690  32.299061  33.700871  34.404637  35.213010</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [25]  36.296748  37.764013  38.409299  40.410950  42.352622  43.437435</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [31]  45.583809  46.898344  47.871860  48.918490  51.504291  52.812050</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [37]  55.232033  56.759521  57.572129  58.319572  60.705153  62.204334</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [43]  63.838365  65.826710  67.450093  68.534809  71.016913  73.127310</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [49]  74.131668  76.074927  76.844723  78.817516  80.960568  82.446401</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [55]  84.000869  84.975839  85.778519  87.371530  88.238972  89.469210</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [61]  90.638672  91.785048  92.894984  94.750790  96.491373  98.958947</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [67] 100.404830 102.695104 104.531536 105.704549 108.122525 108.897840</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [73] 109.647810 112.055520 113.011545 114.644393 115.422643 118.031517</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [79] 118.893385 119.761111 121.831796 123.021970 125.019018 125.635943</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [85] 127.751313 129.805915 130.925935 132.390394 134.460273 136.077224</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [91] 137.989401 138.928684 140.986772 142.896909 143.415940 144.949065</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [97] 146.758733 149.065694 150.026993 151.204477</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

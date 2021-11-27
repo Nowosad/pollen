@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pollen</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.80.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.81.0</span>
       </span>
     </div>
 
@@ -170,81 +170,88 @@
 <p>Driessen M. N. B. M., Van Herpen R. M. A. and Smithuis, L. O. M. J.: 1990, Prediction of the start of the grass pollen season for the southern part of the Netherlands, Grana, 29(1), 79-86.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pollen_count</span><span class='op'>)</span>
-<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>pollen_count</span>, <span class='va'>site</span><span class='op'>==</span><span class='st'>'Oz'</span><span class='op'>)</span>
-<span class='fu'>pollen_season</span><span class='op'>(</span>value<span class='op'>=</span><span class='va'>df</span><span class='op'>$</span><span class='va'>birch</span>, date<span class='op'>=</span><span class='va'>df</span><span class='op'>$</span><span class='va'>date</span>, method<span class='op'>=</span><span class='st'>"95"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: `arrange_()` was deprecated in dplyr 0.7.0.</span>
-#&gt; <span class='warning'>Please use `arrange()` instead.</span>
-#&gt; <span class='warning'>See vignette('programming') for more help</span></div><div class='output co'>#&gt;    year      start        end
-#&gt; 1  2007 2007-03-31 2007-05-03
-#&gt; 2  2008 2008-04-19 2008-05-07
-#&gt; 3  2009 2009-04-09 2009-05-09
-#&gt; 4  2010 2010-04-14 2010-05-07
-#&gt; 5  2011 2011-04-20 2011-05-17
-#&gt; 6  2012 2012-04-09 2012-05-14
-#&gt; 7  2013 2013-04-09 2013-05-09
-#&gt; 8  2014 2014-04-08 2014-05-10
-#&gt; 9  2015 2015-04-08 2015-04-30
-#&gt; 10 2016 2016-04-06 2016-05-09</div><div class='input'>
-<span class='va'>df2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>pollen_count</span>, <span class='va'>site</span><span class='op'>==</span><span class='st'>'Atlantis'</span><span class='op'>)</span>
-<span class='fu'>pollen_season</span><span class='op'>(</span>value<span class='op'>=</span><span class='va'>df2</span><span class='op'>$</span><span class='va'>alder</span>, date<span class='op'>=</span><span class='va'>df2</span><span class='op'>$</span><span class='va'>date</span>, method<span class='op'>=</span><span class='st'>"95"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: NA values were found in the input data.</span></div><div class='output co'>#&gt;    year      start        end
-#&gt; 1  2007       &lt;NA&gt;       &lt;NA&gt;
-#&gt; 2  2008 2008-03-23 2008-04-14
-#&gt; 3  2009 2009-03-16 2009-04-03
-#&gt; 4  2010 2010-03-26 2010-04-07
-#&gt; 5  2011 2011-03-28 2011-04-14
-#&gt; 6  2012 2012-02-13 2012-04-05
-#&gt; 7  2013 2013-02-05 2013-03-16
-#&gt; 8  2014 2014-02-11 2014-04-29
-#&gt; 9  2015 2015-03-19 2015-04-04
-#&gt; 10 2016 2016-03-14 2016-04-23</div><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='http://purrr.tidyverse.org'>'purrr'</a></span><span class='op'>)</span>
-<span class='va'>pollen_count</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span><span class='va'>.</span>, <span class='va'>.</span><span class='op'>$</span><span class='va'>site</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-                 <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_df</a></span><span class='op'>(</span><span class='op'>~</span><span class='fu'>pollen_season</span><span class='op'>(</span>value<span class='op'>=</span><span class='va'>.</span><span class='op'>$</span><span class='va'>hazel</span>, date<span class='op'>=</span><span class='va'>.</span><span class='op'>$</span><span class='va'>date</span>, method<span class='op'>=</span><span class='st'>"95"</span><span class='op'>)</span>, .id<span class='op'>=</span><span class='st'>"site"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                 site year      start        end
-#&gt; 1           Atlantis 2007 2007-01-29 2007-03-19
-#&gt; 2           Atlantis 2008 2008-03-23 2008-04-14
-#&gt; 3           Atlantis 2009 2009-03-15 2009-04-11
-#&gt; 4           Atlantis 2010 2010-03-24 2010-04-14
-#&gt; 5           Atlantis 2011 2011-03-26 2011-04-12
-#&gt; 6           Atlantis 2012 2012-01-21 2012-03-26
-#&gt; 7           Atlantis 2013 2013-02-02 2013-03-29
-#&gt; 8           Atlantis 2014 2014-02-07 2014-04-09
-#&gt; 9           Atlantis 2015 2015-03-01 2015-03-30
-#&gt; 10          Atlantis 2016 2016-03-11 2016-04-06
-#&gt; 11 Hundred Acre Wood 2007 2007-01-29 2007-03-31
-#&gt; 12 Hundred Acre Wood 2008 2008-03-10 2008-05-10
-#&gt; 13 Hundred Acre Wood 2009 2009-02-08 2009-03-31
-#&gt; 14 Hundred Acre Wood 2010 2010-01-24 2010-04-16
-#&gt; 15 Hundred Acre Wood 2011 2011-03-25 2011-04-16
-#&gt; 16 Hundred Acre Wood 2012 2012-01-10 2012-03-29
-#&gt; 17 Hundred Acre Wood 2013 2013-01-24 2013-03-12
-#&gt; 18 Hundred Acre Wood 2014 2014-03-04 2014-03-31
-#&gt; 19 Hundred Acre Wood 2015 2015-02-26 2015-03-31
-#&gt; 20 Hundred Acre Wood 2016 2016-02-06 2016-03-31
-#&gt; 21                Oz 2007 2007-02-03 2007-03-18
-#&gt; 22                Oz 2008 2008-03-10 2008-04-03
-#&gt; 23                Oz 2009 2009-02-17 2009-03-26
-#&gt; 24                Oz 2010 2010-03-18 2010-04-10
-#&gt; 25                Oz 2011 2011-03-27 2011-04-13
-#&gt; 26                Oz 2012 2012-01-12 2012-03-14
-#&gt; 27                Oz 2013 2013-01-22 2013-03-25
-#&gt; 28                Oz 2014 2014-03-05 2014-04-05
-#&gt; 29                Oz 2015 2015-03-19 2015-04-02
-#&gt; 30                Oz 2016 2016-03-10 2016-03-30
-#&gt; 31             Shire 2007 2007-01-28 2007-03-24
-#&gt; 32             Shire 2008 2008-02-22 2008-04-01
-#&gt; 33             Shire 2009 2009-02-03 2009-03-27
-#&gt; 34             Shire 2010 2010-02-07 2010-04-07
-#&gt; 35             Shire 2011 2011-02-20 2011-04-12
-#&gt; 36             Shire 2012 2012-01-10 2012-03-18
-#&gt; 37             Shire 2013 2013-01-21 2013-03-02
-#&gt; 38             Shire 2014 2014-03-01 2014-03-27
-#&gt; 39             Shire 2015 2015-02-19 2015-03-30
-#&gt; 40             Shire 2016 2016-01-17 2016-03-28</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pollen_count</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>pollen_count</span>, <span class='va'>site</span><span class='op'>==</span><span class='st'>'Oz'</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pollen_season</span><span class='op'>(</span>value<span class='op'>=</span><span class='va'>df</span><span class='op'>$</span><span class='va'>birch</span>, date<span class='op'>=</span><span class='va'>df</span><span class='op'>$</span><span class='va'>date</span>, method<span class='op'>=</span><span class='st'>"95"</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>`arrange_()` was deprecated in dplyr 0.7.0.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> Please use `arrange()` instead.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> See vignette('programming') for more help</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span style='color: #555555;'>This warning is displayed once every 8 hours.</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span style='color: #555555;'>Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    year      start        end</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  2007 2007-03-31 2007-05-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  2008 2008-04-19 2008-05-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  2009 2009-04-09 2009-05-09</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  2010 2010-04-14 2010-05-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5  2011 2011-04-20 2011-05-17</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6  2012 2012-04-09 2012-05-14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7  2013 2013-04-09 2013-05-09</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8  2014 2014-04-08 2014-05-10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9  2015 2015-04-08 2015-04-30</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10 2016 2016-04-06 2016-05-09</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>df2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>pollen_count</span>, <span class='va'>site</span><span class='op'>==</span><span class='st'>'Atlantis'</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pollen_season</span><span class='op'>(</span>value<span class='op'>=</span><span class='va'>df2</span><span class='op'>$</span><span class='va'>alder</span>, date<span class='op'>=</span><span class='va'>df2</span><span class='op'>$</span><span class='va'>date</span>, method<span class='op'>=</span><span class='st'>"95"</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>NA values were found in the input data.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    year      start        end</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  2007       &lt;NA&gt;       &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  2008 2008-03-23 2008-04-14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  2009 2009-03-16 2009-04-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  2010 2010-03-26 2010-04-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5  2011 2011-03-28 2011-04-14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6  2012 2012-02-13 2012-04-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7  2013 2013-02-05 2013-03-16</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8  2014 2014-02-11 2014-04-29</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9  2015 2015-03-19 2015-04-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10 2016 2016-03-14 2016-04-23</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='http://purrr.tidyverse.org'>'purrr'</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>pollen_count</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span><span class='va'>.</span>, <span class='va'>.</span><span class='op'>$</span><span class='va'>site</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>                 <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_df</a></span><span class='op'>(</span><span class='op'>~</span><span class='fu'>pollen_season</span><span class='op'>(</span>value<span class='op'>=</span><span class='va'>.</span><span class='op'>$</span><span class='va'>hazel</span>, date<span class='op'>=</span><span class='va'>.</span><span class='op'>$</span><span class='va'>date</span>, method<span class='op'>=</span><span class='st'>"95"</span><span class='op'>)</span>, .id<span class='op'>=</span><span class='st'>"site"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                 site year      start        end</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1           Atlantis 2007 2007-01-29 2007-03-19</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2           Atlantis 2008 2008-03-23 2008-04-14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3           Atlantis 2009 2009-03-15 2009-04-11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4           Atlantis 2010 2010-03-24 2010-04-14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5           Atlantis 2011 2011-03-26 2011-04-12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6           Atlantis 2012 2012-01-21 2012-03-26</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7           Atlantis 2013 2013-02-02 2013-03-29</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8           Atlantis 2014 2014-02-07 2014-04-09</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9           Atlantis 2015 2015-03-01 2015-03-30</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10          Atlantis 2016 2016-03-11 2016-04-06</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11 Hundred Acre Wood 2007 2007-01-29 2007-03-31</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12 Hundred Acre Wood 2008 2008-03-10 2008-05-10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13 Hundred Acre Wood 2009 2009-02-08 2009-03-31</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14 Hundred Acre Wood 2010 2010-01-24 2010-04-16</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15 Hundred Acre Wood 2011 2011-03-25 2011-04-16</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16 Hundred Acre Wood 2012 2012-01-10 2012-03-29</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17 Hundred Acre Wood 2013 2013-01-24 2013-03-12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18 Hundred Acre Wood 2014 2014-03-04 2014-03-31</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19 Hundred Acre Wood 2015 2015-02-26 2015-03-31</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20 Hundred Acre Wood 2016 2016-02-06 2016-03-31</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21                Oz 2007 2007-02-03 2007-03-18</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22                Oz 2008 2008-03-10 2008-04-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23                Oz 2009 2009-02-17 2009-03-26</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24                Oz 2010 2010-03-18 2010-04-10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25                Oz 2011 2011-03-27 2011-04-13</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26                Oz 2012 2012-01-12 2012-03-14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 27                Oz 2013 2013-01-22 2013-03-25</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 28                Oz 2014 2014-03-05 2014-04-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 29                Oz 2015 2015-03-19 2015-04-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 30                Oz 2016 2016-03-10 2016-03-30</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 31             Shire 2007 2007-01-28 2007-03-24</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 32             Shire 2008 2008-02-22 2008-04-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 33             Shire 2009 2009-02-03 2009-03-27</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 34             Shire 2010 2010-02-07 2010-04-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 35             Shire 2011 2011-02-20 2011-04-12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 36             Shire 2012 2012-01-10 2012-03-18</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 37             Shire 2013 2013-01-21 2013-03-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 38             Shire 2014 2014-03-01 2014-03-27</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 39             Shire 2015 2015-02-19 2015-03-30</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 40             Shire 2016 2016-01-17 2016-03-28</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
