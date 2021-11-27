@@ -2,23 +2,50 @@
 % Please edit documentation in R/base_temp.R
 \name{base_temp}
 \alias{base_temp}
-\title{Title}
+\title{Determining base temperatures}
 \usage{
 base_temp(tavg, d, type)
 }
 \arguments{
-\item{tavg}{}
+\item{tavg}{the mean temperature of the entire season for the plantings (a numerical vector, where one value is a planting)}
 
-\item{d}{}
+\item{d}{the number of days of the ith planting to reach a given developmental stage under study (e.g., flowering ) (a numerical vector, where one value is a planting)}
 
-\item{type}{}
+\item{type}{either `"sd_gdd"`, `"sd_day"`, `"cv_day"`, or `"y_i"`. For the explanation of each type, see the Yang et al. 1995}
 }
 \value{
-
+a numeric value representing base temperature that could be then used, for example, in GDD calculations
 }
 \description{
-Title
+This function determines a base temperature ("tbase") based on the mean temperature of the entire season and the number of days of the ith planting to reach a given developmental stage under study. 
+It allows to use one of four methods to calculate tbase, including:
+(1) the least standard deviation in GDD (Magoon and Culpepper, 1932; Stier, 1939) - `"sd_gdd"`;
+(2) the least standard deviation in days (Arnold, 1959) - `"sd_day"`;
+(3) the coefficient of variation in days (Nuttonson, 1958) - `"cv_day"`;
+(4) the regression coefficient (Hoover, 1955) - `"y_i"`.
+}
+\examples{
+library(pollen)
+tavg <- c(25, 20, 15, 10)
+d <- c(6, 11, 16, 21)
+base_temp(tavg = tavg, d = d, type = "sd_gdd")
+base_temp(tavg = tavg, d = d, type = "sd_day")
+base_temp(tavg = tavg, d = d, type = "cv_day")
+base_temp(tavg = tavg, d = d, type = "y_i")
 }
 \references{
 Yang, S., Logan, J., & Coffey, D. L. (1995). Mathematical formulae for calculating the base temperature for growing degree days. In Agricultural and Forest Meteorology (Vol. 74, Issues 1-2, pp. 61-74). Elsevier BV
+
+Magoon, C. A., & Culpepper, C. W. (1932). Response of sweet corn to varying temperatures from time of planting to canning maturity (No. 1488-2016-124513).
+
+Stier, H. S. (1939). A physiological study of growth and fruiting in the tomato (Lycopersicon esculentum L.) with reference to the effect of climatic and edaphic conditions (Doctoral dissertation, Ph. D. Dissertation, University of Maryland, College Park, MD, USA).
+
+Arnold, C. Y. (1959, January). The determination and significance of the base temperature in a linear heat unit system. In Proceedings of the american Society for horticultural Science (Vol. 74, No. 1, pp. 430-445).
+
+Nuttonson, M. Y. (1955). Wheat-climate relationships and the use of phenology in ascertaining the thermal and photo-thermal requirements of wheat. Amer. Inst. of Crop Ecology, Washington, D.
+
+Hoover, M. W. (1955). Some effects of temperature on the growth of southern peas. In Proc. Am. Soc. Hortic. Sci (Vol. 66, pp. 308-312).
+}
+\seealso{
+[pollen::gdd()]
 }

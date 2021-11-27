@@ -14,6 +14,8 @@
 #' @references Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912
 #'
 #' @export
+#' 
+#' @seealso [pollen::base_temp()]
 #'
 #' @examples
 #' set.seed(25)
