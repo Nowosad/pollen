@@ -9,7 +9,7 @@
 #' @return a data.frame object with year, date of pollen season start and date of pollen season end
 #' @importFrom lubridate year is.Date
 #' @importFrom purrr %>% map map_df
-#' @importFrom dplyr arrange_
+#' @importFrom dplyr arrange
 #'
 #' @references Nilsson S. and Persson S.: 1981, Tree pollen spectra in the Stockholm region (Sweden) 1973-1980, Grana 20, 179-182.
 #' @references Andersen T.B.: 1991, A model to predict the beginning of the pollen season, Grana 30, 269-275.
@@ -39,7 +39,7 @@
 pollen_season <- function(value, date, method, threshold=NULL) {
         df <- data.frame(value = value, date = date) %>%
                 split(., year(.[["date"]])) %>%
-                map(~arrange_(., "date")) %>%
+                map(~arrange(., date)) %>%
                 map(~pollen_season_single_year(., value = "value", date = "date", method = method, threshold = threshold)) %>%
                 map_df(rbind)
         if (anyNA(df)) warning("NA values were found in the input data.", immediate. = TRUE)
