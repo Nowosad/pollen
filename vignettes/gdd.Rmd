@@ -7,6 +7,8 @@ vignette: >
   %\VignetteIndexEntry{Calculation of growing degree days (GDD) in the pollen package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: "`r system.file('refs.bib', package = 'pollen')`"
+nocite: '@Baskerville1969'
 ---
 
 ```{r, include = FALSE}
@@ -90,5 +92,3 @@ The above figure clearly shows that the selection of the calculation method (`ty
 Therefore, it is crucial to select the `type` and other parameters (`tbase` and `tbase_max`) that are appropriate for the studied phase in the plant or animal development. 
 
 # References
-
-Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517.  https://doi.org/10.2307/1933912

@@ -6,7 +6,9 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to the pollen package}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
+bibliography: "`r system.file('refs.bib', package = 'pollen')`"
+nocite: '@Kasprzyk2014'
 ---
 
 ```{r, echo = FALSE, message = FALSE}
@@ -116,12 +118,10 @@ identical(df, new_df)
 Or a group of sites:
 
 ```{r}
-library("purrr")
+library(purrr)
 new_pollen_count <- pollen_count %>%
   split(., .$site) %>%
   map_dfr(~outliers_replacer(value = .$hazel, date = .$date, threshold = 4))
 ```
 
 # References
-
-- Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic Distribution Models for Airborne Pollen Grains and Fungal Spore Season Dynamics, Aerobiologia 30(4), 369-83.
