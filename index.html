@@ -24,6 +24,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -36,18 +38,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pollen</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.82.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.82.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -69,7 +65,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Nowosad/pollen/">
+  <a href="https://github.com/Nowosad/pollen/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -86,29 +82,29 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="pollen---tools-for-working-with-aerobiological-data" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#pollen---tools-for-working-with-aerobiological-data" class="anchor"></a>Pollen - tools for working with aerobiological data</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="pollen---tools-for-working-with-aerobiological-data">Pollen - tools for working with aerobiological data<a class="anchor" aria-label="anchor" href="#pollen---tools-for-working-with-aerobiological-data"></a>
+</h1></div>
 
 <p>The <strong>pollen</strong> package is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, including determination of pollen season limits, replacement of outliers (Kasprzyk and Walanus (2014)), and calculation of growing degree days (Baskerville and Emin (1969)).</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Get the released version from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pollen"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pollen"</span><span class="op">)</span></code></pre></div>
 <p>Or the development version from github:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"nowosad/pollen"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"nowosad/pollen"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nowosad.github.io/pollen/">pollen</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://nowosad.github.io/pollen/" class="external-link">pollen</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"pollen_count"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pollen_count</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"pollen_count"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">pollen_count</span><span class="op">)</span>
 <span class="co">#&gt;   site       date alder birch hazel</span>
 <span class="co">#&gt; 1   Oz 2007-01-01     0     0     0</span>
 <span class="co">#&gt; 2   Oz 2007-01-02     0     0     0</span>
@@ -116,11 +112,11 @@
 <span class="co">#&gt; 4   Oz 2007-01-04     0     0     0</span>
 <span class="co">#&gt; 5   Oz 2007-01-05     0     0     0</span>
 <span class="co">#&gt; 6   Oz 2007-01-06     0     0     0</span></code></pre></div>
-<div id="pollen-season-calculation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pollen-season-calculation" class="anchor"></a>Pollen season calculation</h3>
+<div class="section level3">
+<h3 id="pollen-season-calculation">Pollen season calculation<a class="anchor" aria-label="anchor" href="#pollen-season-calculation"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">pollen_count</span>, <span class="va">site</span> <span class="op">==</span> <span class="st">"Oz"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">pollen_count</span>, <span class="va">site</span> <span class="op">==</span> <span class="st">"Oz"</span><span class="op">)</span>
 <span class="fu"><a href="reference/pollen_season.html">pollen_season</a></span><span class="op">(</span>value <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">birch</span>, date <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">date</span>, method <span class="op">=</span> <span class="st">"95"</span><span class="op">)</span>
 <span class="co">#&gt; Warning: `arrange_()` was deprecated in dplyr 0.7.0.</span>
 <span class="co">#&gt; Please use `arrange()` instead.</span>
@@ -136,24 +132,24 @@
 <span class="co">#&gt; 8  2014 2014-04-08 2014-05-10</span>
 <span class="co">#&gt; 9  2015 2015-04-08 2015-04-30</span>
 <span class="co">#&gt; 10 2016 2016-04-06 2016-05-09</span></code></pre></div>
-<p>More examples of pollen seasons’ calculations can be found in <a href="https://nowosad.github.io/pollen/articles/intro.html">the first package vignette</a>.</p>
+<p>More examples of pollen seasons’ calculations can be found in <a href="https://nowosad.github.io/pollen/articles/intro.html" class="external-link">the first package vignette</a>.</p>
 </div>
-<div id="growing-degree-days-gdd-calculation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#growing-degree-days-gdd-calculation" class="anchor"></a>Growing degree days (GDD) calculation</h3>
-<p>Examples of Growing degree days (GDD) calculations can be found in <a href="https://nowosad.github.io/pollen/articles/gdd.html">the second package vignette</a>.</p>
+<div class="section level3">
+<h3 id="growing-degree-days-gdd-calculation">Growing degree days (GDD) calculation<a class="anchor" aria-label="anchor" href="#growing-degree-days-gdd-calculation"></a>
+</h3>
+<p>Examples of Growing degree days (GDD) calculations can be found in <a href="https://nowosad.github.io/pollen/articles/gdd.html" class="external-link">the second package vignette</a>.</p>
 </div>
 </div>
-<div id="contributions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contributions" class="anchor"></a>Contributions</h2>
-<p><a href="https://github.com/Nowosad/pollen/issues">Feel free to submit issues and enhancement requests.</a></p>
+<div class="section level2">
+<h2 id="contributions">Contributions<a class="anchor" aria-label="anchor" href="#contributions"></a>
+</h2>
+<p><a href="https://github.com/Nowosad/pollen/issues" class="external-link">Feel free to submit issues and enhancement requests.</a></p>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <ul>
-<li>Baskerville, G., &amp; Emin, P.: 1969. Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. <a href="https://doi.org/10.2307/1933912" class="uri">https://doi.org/10.2307/1933912</a>
+<li>Baskerville, G., &amp; Emin, P.: 1969. Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. <a href="https://doi.org/10.2307/1933912" class="external-link uri">https://doi.org/10.2307/1933912</a>
 </li>
 <li>Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic Distribution Models for Airborne Pollen Grains and Fungal Spore Season Dynamics, Aerobiologia 30(4), 369-83.</li>
 </ul>
@@ -163,56 +159,60 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=pollen">https://​cloud.r-project.org/​package=pollen</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/Nowosad/pollen/">https://​github.com/​Nowosad/​pollen/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/Nowosad/pollen/issues">https://​github.com/​Nowosad/​pollen/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing pollen</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Jakub Nowosad <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1057-3721" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://cloud.r-project.org/package=pollen" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/Nowosad/pollen/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/Nowosad/pollen/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/Nowosad/pollen/actions"><img src="https://github.com/Nowosad/pollen/workflows/pkgdown/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://app.codecov.io/gh/Nowosad/pollen"><img src="https://app.codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg" alt="codecov"></a></li>
-<li><a href="https://cran.r-project.org/package=pollen"><img src="http://www.r-pkg.org/badges/version/pollen" alt="CRAN version"></a></li>
-<li><a href="https://cran.r-project.org/package=pollen"><img src="http://cranlogs.r-pkg.org/badges/pollen" alt="CRAN RStudio mirror downloads"></a></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing pollen</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Jakub Nowosad <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1057-3721" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/Nowosad/pollen/actions" class="external-link"><img src="https://github.com/Nowosad/pollen/workflows/pkgdown/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://app.codecov.io/gh/Nowosad/pollen" class="external-link"><img src="https://app.codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://cran.r-project.org/package=pollen" class="external-link"><img src="http://www.r-pkg.org/badges/version/pollen" alt="CRAN version"></a></li>
+<li><a href="https://cran.r-project.org/package=pollen" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/pollen" alt="CRAN RStudio mirror downloads"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Jakub Nowosad.</p>
+  <p></p>
+<p>Developed by Jakub Nowosad.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -220,6 +220,8 @@
 
   
 
+
+  
 
   </body>
 </html>

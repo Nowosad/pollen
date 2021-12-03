@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   gdd: gdd.html
   intro: intro.html
-last_built: 2021-11-28T12:16Z
+last_built: 2021-12-03T11:24Z
 
