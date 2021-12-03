@@ -6,12 +6,7 @@
 \alias{pollen-package}
 \title{pollen: Analysis of Aerobiological Data}
 \description{
-Supports analysis of aerobiological data. 
-    Available features include determination of pollen season limits, 
-    replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>),
-    calculation of growing degree days (Baskerville and Emin (1969) <doi:10.2307/1933912>), 
-    and determination of the base temperature for growing degree days
-    (Yang et al. (1995) <doi:10.1016/0168-1923(94)02185-M).
+Supports analysis of aerobiological data. Available features include determination of pollen season limits, replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>), calculation of growing degree days (Baskerville and Emin (1969) <doi:10.2307/1933912>), and determination of the base temperature for growing degree days (Yang et al. (1995) <doi:10.1016/0168-1923(94)02185-M).
 }
 \seealso{
 Useful links:
