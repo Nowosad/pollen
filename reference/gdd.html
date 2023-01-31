@@ -27,7 +27,7 @@ and minimum temperatures, a base temperature and a maximum base temperature"><!-
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -65,25 +65,36 @@ and minimum temperatures, a base temperature and a maximum base temperature</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gdd</span><span class="op">(</span><span class="va">tmax</span>, <span class="va">tmin</span>, <span class="va">tbase</span>, <span class="va">tbase_max</span>, type <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gdd</span><span class="op">(</span><span class="va">tmax</span>, <span class="va">tmin</span>, <span class="va">tbase</span>, <span class="va">tbase_max</span>, type <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tmax</dt>
 <dd><p>daily maximum temperature</p></dd>
+
+
 <dt>tmin</dt>
 <dd><p>daily minimum temperature</p></dd>
+
+
 <dt>tbase</dt>
 <dd><p>base temperature</p></dd>
+
+
 <dt>tbase_max</dt>
 <dd><p>maximum base temperature</p></dd>
+
+
 <dt>type</dt>
 <dd><p>either "B", "C", or "D". The default is "C". Type "B" - The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`). In the case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`. Type `"C"` - same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`. Type `"D"`- same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a numeric vector with GDD values</p>
+    
+
+<p>a numeric vector with GDD values</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -96,10 +107,10 @@ and minimum temperatures, a base temperature and a maximum base temperature</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tmax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">6</span>, <span class="fl">10</span><span class="op">)</span>, tmin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">gdd</span><span class="op">(</span>tmax <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">tmax</span>, tmin <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">tmin</span>, tbase <span class="op">=</span> <span class="fl">5</span>, tbase_max <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tmax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">6</span>, <span class="fl">10</span><span class="op">)</span>, tmin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">gdd</span><span class="op">(</span>tmax <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">tmax</span>, tmin <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">tmin</span>, tbase <span class="op">=</span> <span class="fl">5</span>, tbase_max <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [1]   1.392985   3.282512   4.259733   6.554503   7.303287   9.810031</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [7]  11.562224  12.765263  13.878573  15.000558  16.156492  17.383517</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [13]  19.800607  21.478356  23.369211  24.164222  26.150454  28.305062</span>
@@ -117,8 +128,8 @@ and minimum temperatures, a base temperature and a maximum base temperature</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [85] 127.751313 129.805915 130.925935 132.390394 134.460273 136.077224</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [91] 137.989401 138.928684 140.986772 142.896909 143.415940 144.949065</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [97] 146.758733 149.065694 150.026993 151.204477</span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -133,7 +144,7 @@ and minimum temperatures, a base temperature and a maximum base temperature</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

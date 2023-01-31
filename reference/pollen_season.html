@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -63,23 +63,32 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pollen_season</span><span class="op">(</span><span class="va">value</span>, <span class="va">date</span>, <span class="va">method</span>, threshold <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pollen_season</span><span class="op">(</span><span class="va">value</span>, <span class="va">date</span>, <span class="va">method</span>, threshold <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>value</dt>
 <dd><p>pollen concentration values</p></dd>
+
+
 <dt>date</dt>
 <dd><p>dates</p></dd>
+
+
 <dt>method</dt>
 <dd><p>the pollen season method - "90", "95", "98", "Mesa", "Jager", "Lejoly", or "Driessen"</p></dd>
+
+
 <dt>threshold</dt>
 <dd><p>a threshold value used for the "Driessen" method</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a data.frame object with year, date of pollen season start and date of pollen season end</p>
+    
+
+<p>a data.frame object with year, date of pollen season start and date of pollen season end</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -95,10 +104,10 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">pollen_count</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">pollen_count</span>, <span class="va">site</span><span class="op">==</span><span class="st">'Oz'</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">pollen_season</span><span class="op">(</span>value<span class="op">=</span><span class="va">df</span><span class="op">$</span><span class="va">birch</span>, date<span class="op">=</span><span class="va">df</span><span class="op">$</span><span class="va">date</span>, method<span class="op">=</span><span class="st">"95"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">pollen_count</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">pollen_count</span>, <span class="va">site</span><span class="op">==</span><span class="st">'Oz'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pollen_season</span><span class="op">(</span>value<span class="op">=</span><span class="va">df</span><span class="op">$</span><span class="va">birch</span>, date<span class="op">=</span><span class="va">df</span><span class="op">$</span><span class="va">date</span>, method<span class="op">=</span><span class="st">"95"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    year      start        end</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  2007 2007-03-31 2007-05-03</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  2008 2008-04-19 2008-05-07</span>
@@ -110,9 +119,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8  2014 2014-04-08 2014-05-10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9  2015 2015-04-08 2015-04-30</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 2016 2016-04-06 2016-05-09</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">pollen_count</span>, <span class="va">site</span><span class="op">==</span><span class="st">'Atlantis'</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">pollen_season</span><span class="op">(</span>value<span class="op">=</span><span class="va">df2</span><span class="op">$</span><span class="va">alder</span>, date<span class="op">=</span><span class="va">df2</span><span class="op">$</span><span class="va">date</span>, method<span class="op">=</span><span class="st">"95"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">pollen_count</span>, <span class="va">site</span><span class="op">==</span><span class="st">'Atlantis'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pollen_season</span><span class="op">(</span>value<span class="op">=</span><span class="va">df2</span><span class="op">$</span><span class="va">alder</span>, date<span class="op">=</span><span class="va">df2</span><span class="op">$</span><span class="va">date</span>, method<span class="op">=</span><span class="st">"95"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NA values were found in the input data.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    year      start        end</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  2007       &lt;NA&gt;       &lt;NA&gt;</span>
@@ -125,10 +134,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8  2014 2014-02-11 2014-04-29</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9  2015 2015-03-19 2015-04-04</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 2016 2016-03-14 2016-04-23</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="http://purrr.tidyverse.org" class="external-link">'purrr'</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">pollen_count</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">.</span><span class="op">$</span><span class="va">site</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">                 <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_df</a></span><span class="op">(</span><span class="op">~</span><span class="fu">pollen_season</span><span class="op">(</span>value<span class="op">=</span><span class="va">.</span><span class="op">$</span><span class="va">hazel</span>, date<span class="op">=</span><span class="va">.</span><span class="op">$</span><span class="va">date</span>, method<span class="op">=</span><span class="st">"95"</span><span class="op">)</span>, .id<span class="op">=</span><span class="st">"site"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://purrr.tidyverse.org/" class="external-link">'purrr'</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pollen_count</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">.</span><span class="op">$</span><span class="va">site</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>                 <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="op">~</span><span class="fu">pollen_season</span><span class="op">(</span>value<span class="op">=</span><span class="va">.</span><span class="op">$</span><span class="va">hazel</span>, date<span class="op">=</span><span class="va">.</span><span class="op">$</span><span class="va">date</span>, method<span class="op">=</span><span class="st">"95"</span><span class="op">)</span>, .id<span class="op">=</span><span class="st">"site"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                 site year      start        end</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1           Atlantis 2007 2007-01-29 2007-03-19</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2           Atlantis 2008 2008-03-23 2008-04-14</span>
@@ -170,7 +179,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 38             Shire 2014 2014-03-01 2014-03-27</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 39             Shire 2015 2015-02-19 2015-03-30</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40             Shire 2016 2016-01-17 2016-03-28</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -185,7 +194,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
