@@ -53,9 +53,6 @@ head(pollen_count)
 ``` r
 df <- subset(pollen_count, site == "Oz")
 pollen_season(value = df$birch, date = df$date, method = "95")
-#> Warning: `arrange_()` was deprecated in dplyr 0.7.0.
-#> Please use `arrange()` instead.
-#> See vignette('programming') for more help
 #>    year      start        end
 #> 1  2007 2007-03-31 2007-05-03
 #> 2  2008 2008-04-19 2008-05-07
@@ -70,13 +67,25 @@ pollen_season(value = df$birch, date = df$date, method = "95")
 ```
 
 More examples of pollen seasons’ calculations can be found in [the first
-package vignette](https://nowosad.github.io/pollen/articles/intro.html).
+package vignette](https://jakubnowosad.com/pollen/articles/intro.html).
 
 ### Growing degree days (GDD) calculation
 
 Examples of Growing degree days (GDD) calculations can be found in [the
 second package
-vignette](https://nowosad.github.io/pollen/articles/gdd.html).
+vignette](https://jakubnowosad.com/pollen/articles/gdd.html).
+
+## Citation
+
+To cite the `pollen` package in publications, please use:
+
+Nowosad, Jakub (2018). pollen: Analysis of Aerobiological Data. R
+package version 0.71.0. <https://github.com/Nowosad/pollen>
+
+LaTeX/BibTeX version can be obtained with:
+
+    library(pollen)
+    citation("pollen")
 
 ## Contributions
 
@@ -85,9 +94,9 @@ requests.](https://github.com/Nowosad/pollen/issues)
 
 ## References
 
--   Baskerville, G., & Emin, P.: 1969. Rapid Estimation of Heat
-    Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3),
-    514-517. <https://doi.org/10.2307/1933912>
--   Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic
-    Distribution Models for Airborne Pollen Grains and Fungal Spore
-    Season Dynamics, Aerobiologia 30(4), 369-83.
+- Baskerville, G., & Emin, P.: 1969. Rapid Estimation of Heat
+  Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3),
+  514-517. <https://doi.org/10.2307/1933912>
+- Kasprzyk, I. and A. Walanus.: 2014. Gamma, Gaussian and Logistic
+  Distribution Models for Airborne Pollen Grains and Fungal Spore Season
+  Dynamics, Aerobiologia 30(4), 369-83.

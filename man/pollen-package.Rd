@@ -11,7 +11,7 @@ Supports analysis of aerobiological data. Available features include determinati
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://nowosad.github.io/pollen/}
+  \item \url{https://jakubnowosad.com/pollen/}
   \item Report bugs at \url{https://github.com/Nowosad/pollen/issues}
 }
 

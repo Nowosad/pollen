@@ -25,7 +25,7 @@ Suggests:
     tidyr,
     rmarkdown,
     testthat
-URL: https://nowosad.github.io/pollen/
+URL: https://jakubnowosad.com/pollen/
 BugReports: https://github.com/Nowosad/pollen/issues
 License: MIT + file LICENSE
 LazyData: TRUE

@@ -58,11 +58,25 @@ df <- subset(pollen_count, site == "Oz")
 pollen_season(value = df$birch, date = df$date, method = "95")
 ```
 
-More examples of pollen seasons' calculations can be found in [the first package vignette](https://nowosad.github.io/pollen/articles/intro.html).
+More examples of pollen seasons' calculations can be found in [the first package vignette](https://jakubnowosad.com/pollen/articles/intro.html).
 
 ### Growing degree days (GDD) calculation
 
-Examples of Growing degree days (GDD) calculations can be found in [the second package vignette](https://nowosad.github.io/pollen/articles/gdd.html).
+Examples of Growing degree days (GDD) calculations can be found in [the second package vignette](https://jakubnowosad.com/pollen/articles/gdd.html).
+
+## Citation
+
+To cite the `pollen` package in publications, please use:
+
+Nowosad, Jakub (2018). pollen: Analysis of Aerobiological Data. R package version 0.71.0.
+  https://github.com/Nowosad/pollen
+
+LaTeX/BibTeX version can be obtained with:
+
+```
+library(pollen)
+citation("pollen")
+```
 
 ## Contributions
 
