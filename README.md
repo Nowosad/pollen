@@ -4,7 +4,7 @@
 # Pollen - tools for working with aerobiological data
 
 [![R-CMD-check](https://github.com/Nowosad/pollen/workflows/pkgdown/badge.svg)](https://github.com/Nowosad/pollen/actions)
-[![codecov](https://app.codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Nowosad/pollen)
+[![codecov](https://codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Nowosad/pollen?branch=master)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen)
 [![CRAN RStudio mirror
@@ -79,7 +79,7 @@ vignette](https://jakubnowosad.com/pollen/articles/gdd.html).
 
 To cite the `pollen` package in publications, please use:
 
-Nowosad, Jakub (2018). pollen: Analysis of Aerobiological Data. R
+Nowosad, Jakub (2019). pollen: Analysis of Aerobiological Data. R
 package version 0.71.0. <https://github.com/Nowosad/pollen>
 
 LaTeX/BibTeX version can be obtained with:
