@@ -1,7 +1,7 @@
 Package: pollen
 Type: Package
 Title: Analysis of Aerobiological Data
-Version: 0.82.0
+Version: 0.83.0
 Authors@R: person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -30,4 +30,5 @@ BugReports: https://github.com/Nowosad/pollen/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
+Encoding: UTF-8
