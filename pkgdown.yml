@@ -4,4 +4,7 @@ pkgdown_sha: ~
 articles:
   gdd: gdd.html
   intro: intro.html
-last_built: 2025-09-30T07:53Z
+last_built: 2025-09-30T08:04Z
+urls:
+  reference: https://jakubnowosad.com/pollen/reference
+  article: https://jakubnowosad.com/pollen/articles
